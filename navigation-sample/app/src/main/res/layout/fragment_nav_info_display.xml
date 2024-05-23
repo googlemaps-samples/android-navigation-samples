@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NavInfoDisplayFragment"
+    android:id="@+id/forwarded_nav_header"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#4285F4"
+    android:visibility="visible">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="@dimen/fwd_header_margin">
+    <ImageView
+        android:id="@+id/iv_maneuver_icon"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_distance_to_step"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/fwd_header_margin"
+        android:layout_marginStart="@dimen/fwd_header_margin"
+        android:contentDescription="@string/maneuver_icon_description" />
+    <TextView
+        android:id="@+id/tv_distance_to_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/iv_maneuver_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"/>
+    <TextView
+        android:id="@+id/tv_time_to_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_primary_text"
+        app:layout_constraintBottom_toBottomOf="@id/tv_distance_to_step"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:paddingBottom="1dp"/>
+    <TextView
+        android:id="@+id/tv_primary_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_time_to_step"
+        app:layout_constraintLeft_toRightOf="@id/iv_maneuver_icon"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<TableLayout
+    android:id="@+id/expanded_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
+    android:layout_marginHorizontal="@dimen/fwd_header_margin"
+    android:layout_marginBottom="@dimen/fwd_header_margin">
+    <TableRow>
+        <!-- Maneuver Type -->
+        <TextView
+            android:text="@string/maneuver"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_maneuver_type"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:paddingStart="@dimen/fwd_header_margin" />
+    </TableRow>
+    <TableRow>
+        <!-- Full Step Instruction -->
+        <TextView
+            android:text="@string/instruction"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_full_instruction"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+    <TableRow>
+        <!-- Driving Side -->
+        <TextView
+            android:text="@string/driving_side"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_driving_side"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:paddingStart="@dimen/fwd_header_margin"/>
+    </TableRow>
+    <TableRow>
+        <!-- Roundabout Turn Number -->
+        <TextView
+            android:text="@string/roundabout_turn_number"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_roundabout_turn_number"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:paddingStart="@dimen/fwd_header_margin"/>
+    </TableRow>
+    <TableRow>
+        <!-- ETA to next destination -->
+        <TextView
+            android:text="@string/next_destination_eta"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_next_destination_eta"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+    <TableRow>
+        <!-- Remaining distance to next destination -->
+        <TextView
+            android:text="@string/next_destination_remaining_distance"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_next_destination_remaining_distance"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+    <TableRow>
+        <!-- ETA to final destination -->
+        <TextView
+            android:text="@string/final_destination_eta"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_final_destination_eta"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+    <TableRow>
+        <!-- Remaining distance to final destination -->
+        <TextView
+            android:text="@string/final_destination_remaining_distance"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_final_destination_remaining_distance"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+    <TableRow>
+        <!-- Timestamp of Update -->
+        <TextView
+            android:text="@string/timestamp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size"/>
+        <TextView
+            android:id="@+id/tv_timestamp"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/fwd_header_margin"
+            android:paddingLeft="@dimen/fwd_header_margin"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/fwd_header_expansion_text_size" />
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_current_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_step"
+            android:textAllCaps="false"
+            android:enabled="false"/>
+        <Button
+            android:id="@+id/btn_prev_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/previous_step"
+            android:textAllCaps="false"
+            android:enabled="false"/>
+        <Button
+            android:id="@+id/btn_next_step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_step"
+            android:textAllCaps="false"
+            android:enabled="false"/>
+    </LinearLayout>
+</TableLayout>
+</LinearLayout>

@@ -1,0 +1,85 @@
+<!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="LatLng:" />
+      <EditText
+          android:layout_width="wrap_content"
+          android:id="@+id/pano_latlng_text"
+          android:text="123456"
+          android:layout_height="wrap_content"
+          android:inputType="text" />
+  </LinearLayout>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+      android:id="@+id/radius_toggle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="onToggleCustomRadius"
+      android:text="Radius (m):"/>
+    <SeekBar
+      android:id="@+id/radius_bar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:max="500"/>
+  </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <CheckBox
+      android:id="@+id/outdoor_only_toggle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Outdoor Only"/>
+  </LinearLayout>
+  <Spinner
+    android:id="@+id/pano_latlng_list_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="SHOWING:" />
+      <TextView
+          android:id="@+id/currentpanolocationstr"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:text="null" />
+  </LinearLayout>
+  <fragment
+    android:id="@+id/streetviewpanorama"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    class="com.google.android.gms.maps.SupportStreetViewPanoramaFragment"/>
+</LinearLayout>

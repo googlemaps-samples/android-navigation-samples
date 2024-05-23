@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/controls_navview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="60dp"
+    android:visibility="gone">
+
+    <ToggleButton
+        android:id="@+id/btn_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleTripProgressBarUi"
+        android:checked="false"
+        android:textOff="@string/trip_progress_bar_prompt"
+        android:textOn="@string/trip_progress_bar_prompt" />
+
+    <ToggleButton
+        android:id="@+id/btn_navigation_ui_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toggleNavigationUiEnabled"
+        android:checked="true"
+        android:textOff="@string/navigation_ui_prompt"
+        android:textOn="@string/navigation_ui_prompt" />
+
+    <Spinner
+        android:id="@+id/night_mode_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/spinner_bg_color" />
+</LinearLayout>

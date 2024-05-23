@@ -1,0 +1,16 @@
+[
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#ff0000"
+            },
+            {
+                "lightness": 16
+            }
+        ]
+    }
+]

@@ -1,0 +1,5 @@
+Google Maps/Google Earth Additional Terms of Service available at:
+    https://www.google.com/help/terms_maps.html
+
+Legal Notices for Google Maps and Google Maps APIs available at:
+    https://www.google.com/help/legalnotices_maps.html

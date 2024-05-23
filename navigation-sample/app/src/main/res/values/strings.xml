@@ -1,0 +1,46 @@
+<!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">NavSDK Navigation Sample</string>
+    <string name="maneuver_icon_description"
+        translatable="false">The icon for the maneuver.</string>
+    <string name="maneuver" translatable="false">Maneuver</string>
+    <string name="instruction" translatable="false">Instruction</string>
+    <string name="driving_side" translatable="false">Driving Side</string>
+    <string name="roundabout_turn_number" translatable="false">Rndabt Turn Num</string>
+    <string name="next_destination_eta" translatable="false">Next Destination ETA</string>
+    <string name="next_destination_remaining_distance" translatable="false">Next Dest Dist Remaining</string>
+    <string name="final_destination_eta" translatable="false">Final Destination ETA</string>
+    <string name="final_destination_remaining_distance" translatable="false">Final Dest Dist Remaining</string>
+    <string name="timestamp" translatable="false">Timestamp</string>
+    <string name="current_step" translatable="false">Current Step</string>
+    <string name="previous_step" translatable="false">Prev Step</string>
+    <string name="next_step" translatable="false">Next Step</string>
+    <string name="set_destination_menu_option">Set Destination</string>
+    <string name="selection_text">Select a demo to launch below</string>
+    <string name="nav_methods_toggle_label">Nav methods</string>
+    <string name="map_methods_toggle_label">Map methods</string>
+    <string name="view_methods_toggle_label">View methods</string>
+    <string name="move_camera_to_melbourne_prompt">Move camera\nto Melbourne</string>
+    <string name="location_marker_prompt">Location marker</string>
+    <string name="nav_fwding_prompt">Nav fwding</string>
+    <string name="log_trip_info_prompt">Log\n trip info</string>
+    <string name="navigation_ui_prompt">Navigation\nUI</string>
+    <string name="trip_progress_bar_prompt">Trip progress\nbar</string>
+    <string name="switch_customizations_ui_prompt">Switch Customizations UI On/Off</string>
+    <string name="stop_trip_and_show_mapfragment_prompt">Stop trip and show MapFragment</string>
+</resources>

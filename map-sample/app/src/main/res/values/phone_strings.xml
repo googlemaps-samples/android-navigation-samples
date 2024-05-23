@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2024 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<resources>
+  <string name="add_info_window_to_new_marker" translatable="false">Add info window to new marker</string>
+  <string name="alpha" translatable="false">Alpha</string>
+  <string name="add_ten_markers" translatable="false">Add 10 Markers</string>
+  <string name="animate" translatable="false">Animate</string>
+  <string name="argb" translatable="false">ARGB</string>
+  <string name="background_color_customization_demo_label"
+    description="Title text of Background Color Customization demo for test. [CHAR_LIMIT=NONE]" translatable="false">Background Color Customization</string>
+  <string name="background_color_customization_demo_description"
+    description="Text displayed below the Background Color Customization demo title. [CHAR_LIMIT=NONE]" translatable="false">Demonstrates how to set a custom background color to a map.</string>
+  <string name="background_color_customization_programmatic_demo_label"
+    description="Title text of Background Color Customization - Programmatic demo for test. [CHAR_LIMIT=NONE]" translatable="false">Background Color Customization - Programmatic</string>
+  <string name="background_color_customization_programmatic_demo_description"
+    description="Text displayed below the Background Color Customization  - Programmatic demo title. [CHAR_LIMIT=NONE]" translatable="false">Demonstrates how to programmatically set a custom background color to a map.</string>
+  <string name="basic_map_demo_label" translatable="false">Basic Map</string>
+  <string name="basic_map_demo_description" translatable="false">Launches a map</string>
+  <string name="bearing" translatable="false">Bearing</string>
+  <string name="buildings" translatable="false">Buildings</string>
+  <string name="camera_clamping_demo_label" translatable="false">Developer Zoom Clamping</string>
+  <string name="camera_clamping_demo_description" translatable="false">Demonstrates how to add zoom clamping to a map.</string>
+  <string name="camera_demo_label" translatable="false">Camera</string>
+  <string name="camera_demo_description" translatable="false">Demonstrates camera functions.</string>
+  <string name="circle_demo_label" translatable="false">Circles</string>
+  <string name="circle_demo_description" translatable="false">Demonstrates how to add Circles to a map.</string>
+  <string name="change_title_and_snippet" translatable="false">Change title and snippet</string>
+  <string name="clamp_latlng_adelaide" translatable="false">Clamp to Adelaide</string>
+  <string name="clamp_latlng_pacific" translatable="false">Clamp to Pacific</string>
+  <string name="clamp_latlng_reset" translatable="false">Reset LatLng Bounds</string>
+  <string name="clamp_min_zoom" translatable="false">MinZoom++</string>
+  <string name="clamp_max_zoom" translatable="false">MaxZoom&#8212;</string>
+  <string name="clamp_zoom_reset" translatable="false">Reset Zoom Bounds</string>
+  <string name="clear_cache" translatable="false">Clear cache</string>
+  <string name="clear_map" translatable="false">Clear</string>
+  <string name="clear_markers" translatable="false">Clear Markers</string>
+  <string name="clickable" translatable="false">Clickable</string>
+  <string name="compass" translatable="false">Compass</string>
+  <string name="custom_info_contents" translatable="false">Custom info contents</string>
+  <string name="custom_info_window" translatable="false">Custom info window</string>
+  <string name="day_night_circle_demo_label" translatable="false">Day Night Circle</string>
+  <string name="day_night_circle_demo_description" translatable="false">Shows how a circle can be used for a day night cycle.</string>
+  <string name="default_info_window" translatable="false">Default info window</string>
+  <string name="demo_on_camera_move" translatable="false">CameraMoveStartedListener: %1$s \n %2$s</string>
+  <string name="dimension" translatable="false">Dimension</string>
+  <string name="down_arrow" translatable="false">\u2193</string>
+  <string name="duration" translatable="false">Custom Duration</string>
+  <string name="enable_toolbar_on_new_marker" translatable="false">Enable toolbar on new marker</string>
+  <string name="events_demo_label" translatable="false">Events</string>
+  <string name="events_demo_description" translatable="false">Demonstrates event handling.</string>
+  <string name="events_demo_on_camera_move" translatable="false">long pressed, point=%1$s</string>
+  <string name="events_demo_on_map_click" translatable="false">tapped, point=%1$s</string>
+  <string name="events_demo_on_map_long_click" translatable="false">long pressed, point=%1$s</string>
+  <string name="fade_in" translatable="false">Fade In Tiles</string>
+  <string name="fill_alpha" translatable="false">Fill Alpha</string>
+  <string name="fill_argb" translatable="false">Fill ARGB</string>
+  <string name="fill_hue" translatable="false">Fill Hue</string>
+  <string name="flat" translatable="false">Flat</string>
+  <string name="focus_marker_on_click" translatable="false">Focus marker on click</string>
+  <string name="geodesic" translatable="false">Geodesic</string>
+  <string name="go_to_bondi" translatable="false">Go to Bondi</string>
+  <string name="go_to_sydney" translatable="false">Go to Sydney</string>
+  <string name="ground_overlay_demo_label" translatable="false">Ground Overlays</string>
+  <string name="ground_overlay_demo_description" translatable="false">Demonstrates how to add a GroundOverlay to a map.</string>
+  <string name="hide_sydney_info_window" translatable="false">Hide Sydney Info</string>
+  <string name="hue" translatable="false">Hue</string>
+  <string name="info_window_anchor_u" translatable="false">Info Window Anchor U</string>
+  <string name="info_window_anchor_v" translatable="false">Info Window Anchor V</string>
+  <string name="layers_demo_label" translatable="false">Layers</string>
+  <string name="layers_demo_description" translatable="false">Demonstrates the different map layers.</string>
+  <string name="left_arrow" translatable="false">\u2190</string>
+  <string name="map_not_ready" translatable="false">Map is not ready yet</string>
+  <string name="map_in_pager_demo_label" translatable="false">Map In Pager</string>
+  <string name="map_in_pager_demo_description" translatable="false">Demonstrates how to add a map to a ViewPager.</string>
+  <string name="map_styling_demo_label" translatable="false">Map Styling</string>
+  <string name="map_styling_demo_description" translatable="false">Demonstrates styling on a map.</string>
+  <string name="map_styling_demo_intro" translatable="false">Select one of the following styled maps.</string>
+  <string name="marker_anchor_u" translatable="false">Marker Anchor U</string>
+  <string name="marker_anchor_v" translatable="false">Marker Anchor V</string>
+  <string name="marker_anchors_demo_label" translatable="false">Marker Anchors</string>
+  <string name="marker_anchors_demo_description" translatable="false">Demonstrates marker and info window anchors.</string>
+  <string name="marker_close_info_window_on_retap_demo_label" translatable="false">Marker Close Info Window on Retap</string>
+  <string name="marker_close_info_window_on_retap_demo_description" translatable="false">Demonstrates how to close the info window when the currently selected marker is retapped.</string>
+  <string name="marker_demo_label" translatable="false">Markers</string>
+  <string name="marker_demo_description" translatable="false">Demonstrates how to add Markers to a map.</string>
+  <string name="marker_demo_instructions" translatable="false">Drag Melbourne. Tap Brisbane to change its position.</string>
+  <string name="marker_demo_on_marker_drag" translatable="false">onMarkerDrag.  Current Position: %1$s</string>
+  <string name="marker_demo_on_marker_drag_start" translatable="false">onMarkerDragStart</string>
+  <string name="marker_demo_on_marker_drag_end" translatable="false">onMarkerDragEnd</string>
+  <string name="marker_z_index_demo_label" translatable="false">Marker Z-indices</string>
+  <string name="marker_z_index_demo_description" translatable="false">Demonstrates how to user marker z-indices.</string>
+  <string name="move_the_camera" translatable="false">Move the camera</string>
+  <string name="multi_map_demo_label" translatable="false">Multiple Maps</string>
+  <string name="multi_map_demo_description" translatable="false">Demonstrates how to show multiple maps in a single activity.</string>
+  <string name="multi_map_with_nav_drawer_demo_label" translatable="false">Multiple Maps with Navigation Drawer</string>
+  <string name="multi_map_with_nav_drawer_demo_description" translatable="false">Shows split screen maps with a navigation drawer.</string>
+  <string name="my_location" translatable="false">My Location Layer</string>
+  <string name="my_location_click_listener" translatable="false">My Location Click Listener</string>
+  <string name="my_location_demo_label" translatable="false">My Location Demo</string>
+  <string name="my_location_demo_description" translatable="false">Demonstrates how to use the My Location Layer.</string>
+  <string name="mylocation_button" translatable="false">My Location Button</string>
+  <string name="mylocation_layer" translatable="false">My Location Layer</string>
+  <string name="on_poi_click_demo_label" translatable="false">OnPoiClickListener Demo</string>
+  <string name="on_poi_click_demo_description" translatable="false">Test the OnPoiClickListener.</string>
+  <string name="options_demo_label" translatable="false">Options</string>
+  <string name="options_demo_description" translatable="false">Demonstrates how to use Options to initialize a map.</string>
+  <string name="polygon_demo_label" translatable="false">Polygons</string>
+  <string name="polygon_demo_description" translatable="false">Demonstrates polygons and their styling features.</string>
+  <string name="polygon_selection" translatable="false">Select polygon</string>
+  <string name="polygon_northwest" translatable="false">Northwest</string>
+  <string name="polygon_central" translatable="false">Central</string>
+  <string name="polygon_px" translatable="false">%1$fpx</string>
+  <string name="polygon_southeast" translatable="false">Southeast</string>
+  <string name="polygon_world_wrapped" translatable="false">World Wrapped</string>
+  <string name="polyline_demo_label" translatable="false">Polylines</string>
+  <string name="polyline_demo_description" translatable="false">Demonstrates polylines and their styling features.</string>
+  <string name="polyline_selection" translatable="false">Select polyline</string>
+  <string name="polyline_sydney" translatable="false">Sydney</string>
+  <string name="polyline_melbourne" translatable="false">Melbourne</string>
+  <string name="polyline_australia" translatable="false">Australia</string>
+  <string name="polyline_world" translatable="false">World</string>
+  <string name="position" translatable="false">Position</string>
+  <string name="programmatic_demo_label" translatable="false">Programmatically add map</string>
+  <string name="programmatic_demo_description" translatable="false">Demonstrates how to add a Fragment programmatically.</string>
+  <string name="properties_circle" translatable="false">Properties for Circle(s)</string>
+  <string name="rotate" translatable="false">Rotate Gestures</string>
+  <string name="raw_view_demo_label" translatable="false">Raw View</string>
+  <string name="raw_view_demo_description" translatable="false">Demonstrates how to use a raw View.</string>
+  <string name="reset_map" translatable="false">Reset</string>
+  <string name="retain_map_demo_label" translatable="false">Retain map</string>
+  <string name="retain_map_demo_description" translatable="false">Demonstrates how to reuse a Fragment.</string>
+  <string name="right_arrow" translatable="false">\u2192</string>
+  <string name="rotation" translatable="false">Rotation</string>
+  <string name="save_state_demo_label" translatable="false">Save the state of a Fragment.</string>
+  <string name="save_state_demo_description" translatable="false">Demonstrates how to save the state of a Fragment upon rotation of the device.</string>
+  <string name="save_state_instructions" translatable="false">Drag the marker, tap on it to change its color and rotate the device to check that the state of the map is preserved.</string>
+  <string name="scroll" translatable="false">Scroll Gestures</string>
+  <string name="scroll_during_rotate_or_zoom" translatable="false">Scroll w/Rotate/Zoom</string>
+  <string name="show_map_tiles" translatable="false">Show Map Tiles</string>
+  <string name="show_sydney_info_window" translatable="false">Show Sydney Info</string>
+  <string name="snapshot_clear_button" translatable="false">Clear</string>
+  <string name="snapshot_demo_label" translatable="false">Snapshot</string>
+  <string name="snapshot_demo_description" translatable="false">Demonstrates how to take a snapshot of the map.</string>
+  <string name="snapshot_holder_description" translatable="false">Area for the map snapshot.</string>
+  <string name="snapshot_take_button" translatable="false">Take snapshot</string>
+  <string name="stop_animation" translatable="false">\u25A0</string>
+  <string name="stroke_alpha" translatable="false">Stroke Alpha</string>
+  <string name="stroke_argb" translatable="false">Stroke ARGB</string>
+  <string name="stroke_hue" translatable="false">Stroke Hue</string>
+  <string name="stroke_width" translatable="false">Stroke Width</string>
+  <string name="style_map" translatable="false">Style Map</string>
+  <string name="swipe" translatable="false">\u2190 Swipe \u2192</string>
+  <string name="switch_image" translatable="false">Switch Image</string>
+  <string name="tags_demo_label" translatable="false">Tags</string>
+  <string name="tags_demo_description" translatable="false">Demonstrates how to get and set tags on API objects.</string>
+  <string name="tap_instructions" translatable="false">Tap or long press on the map</string>
+  <string name="tile_coordinate_demo_label" translatable="false">Tile Coordinate Overlay</string>
+  <string name="tile_coordinate_demo_description" translatable="false">Demonstrates how to add a tile overlay with tile coordinates to a map.</string>
+  <string name="tile_overlay_demo_label" translatable="false">Tile Overlays</string>
+  <string name="tile_overlay_demo_description" translatable="false">Demonstrates how to add a tile overlay to a map.</string>
+  <string name="tile_overlay_on_styled_map_demo_label" translatable="false">Tile Overlay with Styled Map</string>
+  <string name="tile_overlay_on_styled_map_demo_description" translatable="false">Demonstrates how to add a tile overlay to a styled map.</string>
+  <string name="tilt" translatable="false">Tilt Gestures</string>
+  <string name="tilt_less" translatable="false">\u2193</string>
+  <string name="tilt_more" translatable="false">\u2191</string>
+  <string name="toolbar_demo_label" translatable="false">Toolbar</string>
+  <string name="toolbar_demo_description" translatable="false">Demonstrates how to control the Map Toolbar.</string>
+  <string name="toolbar_global_toggle" translatable="false">Enable Map Toolbar for all markers</string>
+  <string name="toolbar_instructions" translatable="false">Long press on the map to add a marker. Long press on a marker to remove it.</string>
+  <string name="top_styles_demo_label" translatable="false">Top Styles</string>
+  <string name="top_styles_demo_description" translatable="false">Most commonly used styles from Snazzy Maps.</string>
+  <string name="traffic" translatable="false">Traffic</string>
+  <string name="transparency" translatable="false">Transparency</string>
+  <string name="ui_settings_demo_label" translatable="false">UI Settings</string>
+  <string name="ui_settings_demo_description" translatable="false">Demonstrates how to alter user interface settings.</string>
+  <string name="up_arrow" translatable="false">\u2191</string>
+  <string name="visible" translatable="false">Visible</string>
+  <string name="visible_region_demo_label" translatable="false">Visible Regions</string>
+  <string name="visible_region_demo_description" translatable="false">Demonstrates how to use Visible Regions</string>
+  <string name="vr_aus_button" translatable="false">AUS</string>
+  <string name="vr_normal_button" translatable="false">Normal</string>
+  <string name="vr_more_padded_button" translatable="false">More</string>
+  <string name="vr_soh_button" translatable="false">SOH</string>
+  <string name="vr_sfo_button" translatable="false">SFO</string>
+  <string name="wait_for_map_load" translatable="false">Wait for Map Load</string>
+  <string name="z_index" translatable="false">Z-Index: </string>
+  <string name="z_index_blue_marker" translatable="false">Blue Marker</string>
+  <string name="z_index_circle" translatable="false">Circle</string>
+  <string name="z_index_clickability" translatable="false">Clickability: </string>
+  <string name="z_index_coords" translatable="false">Coords Tile Overlay</string>
+  <string name="z_index_demo_label" translatable="false">Z-Indices</string>
+  <string name="z_index_demo_description" translatable="false">Demonstrates behavior of z-indices on different map objects</string>
+  <string name="z_index_ground_overlay" translatable="false">Ground Overlay</string>
+  <string name="z_index_number" translatable="false">Z-Index number</string>
+  <string name="z_index_moon" translatable="false">Moon Tile Overlay</string>
+  <string name="z_index_polygon" translatable="false">Polygon</string>
+  <string name="z_index_polyline" translatable="false">Polyline</string>
+  <string name="z_index_red_marker" translatable="false">Red Marker</string>
+  <string name="z_index_title" translatable="false">Select an object, change its z-index and/or visibility. Tap on an object to add it to the log.</string>
+  <string name="z_index_visibility" translatable="false">Visibility: </string>
+  <string name="zoom_buttons" translatable="false">Zoom Buttons</string>
+  <string name="zoom_gestures" translatable="false">Zoom Gestures</string>
+  <string name="zoom_in" translatable="false">+</string>
+  <string name="zoom_out" translatable="false">-</string>
+  <string name="zero" translatable="false">0</string>
+  <string name="zero_decimal" translatable="false">0.0</string>
+
+
+  <string name="styling_go_to_south_china_sea" translatable="false">South China Sea</string>
+  <string name="styling_go_to_adelaide" translatable="false">Adelaide</string>
+  <string name="styling_go_to_australia" translatable="false">Australia</string>
+  <string name="styling_style_desaturated" translatable="false">Desaturated</string>
+  <string name="styling_style_invalid_style" translatable="false">Invalid Style</string>
+  <string name="styling_style_text_outline" translatable="false">Text Outline</string>
+  <string name="styling_style_no_style" translatable="false">No Style</string>
+
+  <!--     Indoor    -->
+  <string name="activate_level_at_index" translatable="false">Activate Lvl@Idx:</string>
+  <string name="enable_indoor" translatable="false">Enable Indoor</string>
+  <string name="enable_level_picker" translatable="false">Level Picker</string>
+  <string name="enable_state_change_listener" translatable="false">Listener</string>
+  <string name="focused_building" translatable="false">Focused Bldg:</string>
+  <string name="go" translatable="false">Go</string>
+  <string name="indoor_demo_description" translatable="false">Tests Indoor API on a single map</string>
+  <string name="indoor_demo_label" translatable="false">Indoor</string>
+  <string name="indoor_multi_map_demo_description" translatable="false">Tests Indoor API on multiple maps</string>
+  <string name="indoor_multi_map_demo_label" translatable="false">Indoor MultiMap</string>
+  <string name="refresh_info" translatable="false">Refresh Info</string>
+  <string name="retrieve" translatable="false">Retrieve</string>
+
+  <!--    Streetview    -->
+  <string name="go_to_invalid" translatable="false">Go to Invalid Point</string>
+  <string name="go_to_san_fran" translatable="false">Go to San Fran</string>
+  <string name="go_to_san_fran_outdoor" translatable="false">Go to San Fran (Outdoor Only)</string>
+  <string name="navigate_to_another_panorama" translatable="false">navigate to another panorama</string>
+  <string name="navigation" translatable="false">Navigation</string>
+  <string name="pan_camera" translatable="false">pan camera</string>
+  <string name="panning" translatable="false">Panning Gestures</string>
+  <string name="panorama_not_ready" translatable="false">Panorama is not ready yet</string>
+  <string name="request_position" translatable="false">Position</string>
+  <string name="split_street_view_panorama_and_map_demo_description" translatable="false">Demonstrates how to show a Street View panorama and map.</string>
+  <string name="split_street_view_panorama_and_map_demo_label" translatable="false">Street View Panorama and Map</string>
+  <string name="street_view_panorama_basic_demo_description" translatable="false">Standard Street View Panorama using a Fragment.</string>
+  <string name="street_view_panorama_basic_demo_label" translatable="false">Street View Panorama</string>
+  <string name="street_view_panorama_events_demo_description" translatable="false">Standard Street View Panorama with event handling.</string>
+  <string name="street_view_panorama_events_demo_label" translatable="false">Street View Panorama events</string>
+  <string name="street_view_panorama_camera_changed" translatable="false">Times camera changed="%1$d @ %2$s</string>
+  <string name="street_view_panorama_pano_changed" translatable="false">Times panorama changed=%1$d @ %2$s</string>
+  <string name="street_view_panorama_times_clicked" translatable="false">Times clicked=%1$d : %2$s @ %3$s</string>
+  <string name="street_view_panorama_times_long_clicked" translatable="false">Times long clicked=%1$d : %2$s @ %3$s</string>
+  <string name="street_view_panorama_navigation_demo_description" translatable="false">Street View Panorama with programatic navigation</string>
+  <string name="street_view_panorama_navigation_demo_label" translatable="false">Street View Panorama navigation</string>
+  <string name="street_view_panorama_options_demo_description" translatable="false">Street View Panorama with toggles for options</string>
+  <string name="street_view_panorama_options_demo_label" translatable="false">Street View Panorama options</string>
+  <string name="street_view_panorama_view_demo_description" translatable="false">Standard Street View Panorama using a View</string>
+  <string name="street_view_panorama_view_demo_label" translatable="false">Street View Panorama View</string>
+  <string name="street_view_panorama_anywhere_demo_description" translatable="false">Street View User-Provided Pano IDs</string>
+  <string name="street_view_panorama_anywhere_demo_label" translatable="false">Street View PanoID Demo</string>
+  <string name="street_view_lat_lng_anywhere_demo_description" translatable="false">Street View User-Provided LatLngs</string>
+  <string name="street_view_lat_lng_anywhere_demo_label" translatable="false">Street View LatLng Demo</string>
+  <string name="street_view_multiple_panorama_demo_description" translatable="false">Multiple Street View panoramas inside the same Activity.</string>
+  <string name="street_view_multiple_panorama_demo_label" translatable="false">Street View Multiple Panoramas</string>
+  <string name="streetnames" translatable="false">Streetnames</string>
+  <string name="tap_screen" translatable="false">tap screen</string>
+  <string name="long_press_screen" translatable="false">long press screen</string>
+  <string name="walk_panorama" translatable="false">Walk</string>
+
+  <!--    Permissions    -->
+  <string name="permission_rationale_location" translatable="false">Access to the location service is required to demonstrate the \'my location\' feature, which shows your current location on the map.</string>
+  <string name="location_permission_denied" translatable="false">This sample requires location permission to enable the \'my location\' layer. Please try again and grant access to use the location.\nIf the permission has been permanently denied, it can be enabled from the System Settings &gt; Apps &gt; \'Google Maps SDK for Android Demos\'.</string>
+  <string name="permission_required_toast" translatable="false">Location permission is required for this demo.</string>
+
+  <!--    Polyline Styling    -->
+  <string name="start_cap" translatable="false">Start cap</string>
+  <string name="end_cap" translatable="false">End cap</string>
+  <string name="pattern_solid" translatable="false">Solid</string>
+  <string name="pattern_dotted" translatable="false">Dotted</string>
+  <string name="pattern_dashed" translatable="false">Dashed</string>
+  <string name="pattern_mixed" translatable="false">Mixed</string>
+  <string name="cap_butt" translatable="false">Butt</string>
+  <string name="cap_square" translatable="false">Square</string>
+  <string name="cap_round" translatable="false">Round</string>
+  <string name="cap_custom_chevron" translatable="false">Chevron</string>
+  <string name="cap_custom_ook" translatable="false">Ook</string>
+  <string name="joint_default" translatable="false">Default</string>
+  <string name="joint_bevel" translatable="false">Bevel</string>
+  <string name="joint_round" translatable="false">Round</string>
+  <string name="solid" desc="Label of a toggle button indicating that the selected polyline should have solid color." translatable="false">Solid color</string>
+  <string name="gradient" desc="Label of a toggle button indicating that the selected polyline should have a color gradient." translatable="false">Gradient color</string>
+  <string name="textured" desc="Label of a checkbox indicating whether or not the selected polyline has texture." translatable="false">Textured</string>
+  <string name="default_style" desc="Label of a radio group indicating whether or not default style is applied." translatable="false">Default</string>
+  <string name="point_sprite" desc="Label of a checkbox indicating whether or not the point sprite rendering technique is applied on textured polyline." translatable="false">Point sprite</string>
+
+  <!--    Top Styles    -->
+  <string name="no_style" translatable="false">None</string>
+  <string name="ultra_light_with_labels" translatable="false">Ultra Light with Labels</string>
+  <string name="subtle_grayscale" translatable="false">Subtle Grayscale</string>
+  <string name="shades_of_grey" translatable="false">Shades of Grey</string>
+  <string name="blue_water" translatable="false">Blue water</string>
+  <string name="light_dream" translatable="false">Light Dream</string>
+  <string name="wy" translatable="false">WY</string>
+  <string name="blue_essence" translatable="false">Blue Essence</string>
+  <string name="pale_dawn" translatable="false">Pale Dawn</string>
+  <string name="apple_mapsesque" translatable="false">Apple Mapsesque</string>
+  <string name="black_and_white" translatable="false">Black and White</string>
+  <string name="paper" translatable="false">Paper</string>
+  <string name="midnight_commander" translatable="false">Midnight Commander</string>
+  <string name="silver" translatable="false">Silver</string>
+  <string-array name="top_styles_array" translatable="false">
+    <item>@string/no_style</item>
+    <item>@string/ultra_light_with_labels</item>
+    <item>@string/subtle_grayscale</item>
+    <item>@string/shades_of_grey</item>
+    <item>@string/blue_water</item>
+    <item>@string/light_dream</item>
+    <item>@string/wy</item>
+    <item>@string/blue_essence</item>
+    <item>@string/pale_dawn</item>
+    <item>@string/apple_mapsesque</item>
+    <item>@string/black_and_white</item>
+    <item>@string/paper</item>
+    <item>@string/midnight_commander</item>
+    <item>@string/silver</item>
+  </string-array>
+
+</resources>
