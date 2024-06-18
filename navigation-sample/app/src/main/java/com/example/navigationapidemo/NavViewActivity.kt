@@ -152,7 +152,6 @@ class NavViewActivity : AppCompatActivity() {
     )
 
     withMapAsync {
-      navView.getMapAsync { googleMap ->
         CustomizationPanelsDelegate.setUpCameraPerspectiveSpinner(
           this@NavViewActivity,
           map::followMyLocation,
@@ -167,7 +166,6 @@ class NavViewActivity : AppCompatActivity() {
           this@NavViewActivity,
           navView::addOnNavigationUiChangedListener,
         )
-      }
     }
   }
 

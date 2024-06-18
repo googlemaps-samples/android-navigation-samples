@@ -110,7 +110,7 @@ class SplashScreenActivity : AppCompatActivity() {
   private fun handleShouldShowRequestPermissionRationaleFixFailure(permission: String) = true
 
   private fun onLocationPermissionGranted() {
-    val mainActivity = Intent()
+    val mainActivity = Intent(this, MainActivity::class.java)
     mainActivity.action = MAIN_ACTIVITY_INTENT_ACTION
     startActivity(mainActivity)
     finish()
