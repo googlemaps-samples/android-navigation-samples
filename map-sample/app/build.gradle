@@ -21,7 +21,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 ext {
     androidxLifecycleVersion = "2.6.2"
     glideVersion = "4.13.2"
-    navSdkVersion = "5.5.0"
+    navSdkVersion = "6.0.0"
 }
 
 android {
