@@ -1,8 +1,8 @@
 # Google Navigation SDK Sample Applications
 
-These sample applications provide an example of using the Google Navigation SDK in an Android Studio project.
+These sample applications provide an example of using the Google Navigation SDK in an Android Studio project. 
 
-Note: Currently, the Navigation SDK is only available to a select group of customers. To learn more about getting access to the SDK, [contact the sales team](https://cloud.google.com/contact-maps). Once you have access, you will be able to enable the Navigation SDK on your API key.
+For more information about using the Navigation SDK for Android, see the [developer documentation](https://developers.google.com/maps/documentation/navigation/android-sdk).
 
 ## Description
 
