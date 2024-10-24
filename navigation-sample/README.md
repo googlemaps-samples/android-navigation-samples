@@ -27,6 +27,6 @@ Android Studio project.
 -   In the **Gradle Scripts folder**, open the `gradle.properties` file and add
     the following if they are not already present:
     1. `android.useAndroidX=true`
-    2. `android.enableJetifier=true`
+    1. `android.enableJetifier=true`
 
 -   Build and run the sample application.
