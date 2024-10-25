@@ -24,4 +24,9 @@ Android Studio project.
     [Secrets Gradle plugin](https://developers.google.com/maps/documentation/android-sdk/secrets-gradle-plugin)
     to keep the key out of version control systems.
 
+-   In the **Gradle Scripts folder**, open the `gradle.properties` file and add
+    the following if they are not already present:
+    1. `android.useAndroidX=true`
+    2. `android.enableJetifier=true`
+
 -   Build and run the sample application.
