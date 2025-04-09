@@ -17,10 +17,10 @@
 package com.example.mapdemo;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;

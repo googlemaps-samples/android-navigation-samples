@@ -25,8 +25,6 @@ Android Studio project.
     to keep the key out of version control systems.
 
 -   In the **Gradle Scripts folder**, open the `gradle.properties` file and add
-    the following if they are not already present:
-    1. `android.useAndroidX=true`
-    2. `android.enableJetifier=true`
+    the following if not already present: `android.useAndroidX=true`
 
 -   Build and run the sample application.

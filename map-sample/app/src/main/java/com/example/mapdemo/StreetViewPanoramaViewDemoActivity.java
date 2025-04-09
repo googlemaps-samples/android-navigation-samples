@@ -17,8 +17,8 @@
 package com.example.mapdemo;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.ViewGroup.LayoutParams;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.StreetViewPanoramaOptions;
 import com.google.android.gms.maps.StreetViewPanoramaView;
 import com.google.android.gms.maps.model.LatLng;

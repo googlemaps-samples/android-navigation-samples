@@ -17,8 +17,8 @@
 package com.example.mapdemo;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.maps.MapView;
 import com.google.android.libraries.navigation.NavigationView;
 

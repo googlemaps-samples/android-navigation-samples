@@ -21,12 +21,12 @@ apply plugin: 'org.jetbrains.kotlin.android'
 ext {
     androidxLifecycleVersion = "2.6.2"
     glideVersion = "4.13.2"
-    navSdkVersion = "6.0.0"
+    navSdkVersion = "6.2.0"
 }
 
 android {
     namespace 'com.example.mapdemo'
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     buildFeatures {
         buildConfig true
@@ -38,7 +38,7 @@ android {
         minSdkVersion 23
         // This example targets SDK 30 so that there's no need to explicitly include permissions
         // flows in the app.
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         // Set this to the languages you actually use, otherwise you'll include resource strings
@@ -90,7 +90,7 @@ dependencies {
 
     // Add LeakCanary to debugImplementation because LeakCanary should only run
     // in debug builds.
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
 
     // And dependencies.
     api "androidx.appcompat:appcompat:1.6.1"
@@ -103,7 +103,8 @@ dependencies {
     api "androidx.mediarouter:mediarouter:1.4.0"
     api "androidx.preference:preference:1.2.1"
     api "androidx.recyclerview:recyclerview:1.3.1"
-    api "androidx.transition:transition:1.4.1"
+    api "androidx.transition:transition:1.5.1"
+    api "androidx.viewpager2:viewpager2:1.0.0"
     api "androidx.window:window:1.1.0"
     api "com.github.bumptech.glide:glide:${glideVersion}"
     api "com.google.android.datatransport:transport-api:3.0.0"
@@ -112,8 +113,8 @@ dependencies {
     api 'com.google.errorprone:error_prone_annotations:2.11.0'
     api "joda-time:joda-time:2.10.14"
     api "com.google.android.material:material:1.5.0"
-    api 'org.jetbrains.kotlin:kotlin-reflect:2.0.0'
-    api 'org.jetbrains.kotlin:kotlin-stdlib:2.0.0'
+    api 'org.jetbrains.kotlin:kotlin-reflect:2.1.10'
+    api 'org.jetbrains.kotlin:kotlin-stdlib:2.1.10'
 
     annotationProcessor "androidx.annotation:annotation:1.7.0"
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
