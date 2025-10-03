@@ -18,6 +18,7 @@
 <!-- This can go anywhere in your layout (see other demos for some examples). -->
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layout_container"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:orientation="vertical">

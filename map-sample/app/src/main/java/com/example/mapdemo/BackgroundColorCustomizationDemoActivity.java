@@ -21,15 +21,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /**
- * This shows how to create a simple activity with a custom background color appiled to the map, and
+ * This shows how to create a simple activity with a custom background color applied to the map, and
  * add a marker on the map.
  */
 public class BackgroundColorCustomizationDemoActivity extends AppCompatActivity
@@ -50,6 +52,7 @@ public class BackgroundColorCustomizationDemoActivity extends AppCompatActivity
 
   private void setupNavFragment() {
     setContentView(R.layout.background_color_customization_demo_nav_flavor);
+    setMarginForEdgeToEdgeSupport();
     SupportNavigationFragment navFragment =
         (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     navFragment.getMapAsync(this);
@@ -57,6 +60,7 @@ public class BackgroundColorCustomizationDemoActivity extends AppCompatActivity
 
   private void setupMapFragment() {
     setContentView(R.layout.background_color_customization_demo_maps_flavor);
+    setMarginForEdgeToEdgeSupport();
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
@@ -81,5 +85,14 @@ public class BackgroundColorCustomizationDemoActivity extends AppCompatActivity
         });
 
     map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

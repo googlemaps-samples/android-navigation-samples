@@ -18,12 +18,14 @@ package com.example.mapdemo;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.navigation.NavigationView;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This shows how to create a simple activity with a raw MapView or NavView and add a marker to it.
@@ -43,11 +45,13 @@ public class RawViewDemoActivity extends AppCompatActivity implements OnMapReady
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.raw_view_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       navigationView = (NavigationView) findViewById(R.id.map);
       navigationView.onCreate(savedInstanceState);
       navigationView.getMapAsync(this);
     } else {
       setContentView(R.layout.raw_view_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       mapView = (MapView) findViewById(R.id.map);
       mapView.onCreate(savedInstanceState);
       mapView.getMapAsync(this);
@@ -117,5 +121,14 @@ public class RawViewDemoActivity extends AppCompatActivity implements OnMapReady
     } else {
       navigationView.onSaveInstanceState(outState);
     }
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

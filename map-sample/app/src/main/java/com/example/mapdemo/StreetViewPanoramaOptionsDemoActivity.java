@@ -21,9 +21,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This shows how to create an activity with static streetview (all options have been switched off)
@@ -44,6 +46,13 @@ public class StreetViewPanoramaOptionsDemoActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.street_view_panorama_options_demo);
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
 
     streetNameCheckbox = (CheckBox) findViewById(R.id.streetnames);
     navigationCheckbox = (CheckBox) findViewById(R.id.navigation);

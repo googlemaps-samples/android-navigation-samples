@@ -19,8 +19,10 @@ package com.example.mapdemo;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.MapView;
 import com.google.android.libraries.navigation.NavigationView;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This shows how to create multiple maps in an activity that has a Jetpack navigation drawer. This
@@ -40,10 +42,12 @@ public class MultiMapWithNavDrawerDemoActivity extends AppCompatActivity {
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.multimap_with_nav_drawer_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       navigationView = (NavigationView) findViewById(R.id.mapview);
       navigationView.onCreate(savedInstanceState);
     } else {
       setContentView(R.layout.multimap_with_nav_drawer_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       mapView = (MapView) findViewById(R.id.mapview);
       mapView.onCreate(savedInstanceState);
     }
@@ -107,5 +111,14 @@ public class MultiMapWithNavDrawerDemoActivity extends AppCompatActivity {
     } else {
       navigationView.onSaveInstanceState(outState);
     }
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.drawer_layout)).build()));
   }
 }

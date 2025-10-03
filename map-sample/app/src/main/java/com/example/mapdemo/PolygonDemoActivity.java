@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.widget.RadioGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnPolygonClickListener;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -63,12 +65,14 @@ public class PolygonDemoActivity extends AppCompatActivity
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.polygon_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.polygon_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -233,5 +237,14 @@ public class PolygonDemoActivity extends AppCompatActivity
         new LatLng(49, 62),
         new LatLng(55, 1),
         new LatLng(61, -60));
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This demo shows styling of a mode map, using a static JSON styling string. See use of {@link
@@ -51,11 +53,13 @@ public class MapStylingDemoActivity extends AppCompatActivity implements OnMapRe
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.map_styling_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.map_styling_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       mapFragment.getMapAsync(this);
@@ -136,5 +140,14 @@ public class MapStylingDemoActivity extends AppCompatActivity implements OnMapRe
     if (!success) {
       Toast.makeText(this, STYLING_FAILED_MESSAGE, Toast.LENGTH_SHORT).show();
     }
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

@@ -19,6 +19,7 @@ package com.example.mapdemo;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.example.mapdemo.OnMapAndViewReadyListener.OnGlobalLayoutAndMapReadyListener;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /**
  * A demo to show the effects of rapidly changing the center of a circle by simulating the day/night
@@ -54,11 +56,13 @@ public class DayNightCircleDemoActivity extends AppCompatActivity
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.day_night_circle_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       new OnMapAndViewReadyListener(navFragment, this);
     } else {
       setContentView(R.layout.day_night_circle_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       new OnMapAndViewReadyListener(mapFragment, this);
@@ -96,5 +100,14 @@ public class DayNightCircleDemoActivity extends AppCompatActivity
           }
         };
     animationRunner.run();
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

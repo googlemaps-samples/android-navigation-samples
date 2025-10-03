@@ -20,6 +20,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnCameraMoveStartedListener;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how to listen to some map events. */
 public class EventsDemoActivity extends AppCompatActivity
@@ -48,12 +50,14 @@ public class EventsDemoActivity extends AppCompatActivity
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.events_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.events_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -97,5 +101,14 @@ public class EventsDemoActivity extends AppCompatActivity
             ConversionUtils.toAnimationReasonString(reason),
             map.getCameraPosition().toString());
     cameraTextView.setText(text);
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

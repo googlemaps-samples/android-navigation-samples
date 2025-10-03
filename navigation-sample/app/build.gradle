@@ -21,12 +21,12 @@ apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 ext {
     androidxLifecycleVersion = "2.6.2"
     glideVersion = "4.13.2"
-    navSdkVersion = "6.3.0"
+    navSdkVersion = "7.0.0"
 }
 
 android {
     namespace 'com.example.navigationapidemo'
-    compileSdkVersion 34
+    compileSdk 36
 
     buildFeatures {
         buildConfig true
@@ -34,9 +34,9 @@ android {
 
     defaultConfig {
         applicationId "com.example.navigationapidemo"
-        // Navigation SDK supports a minimum of SDK 23.
-        minSdkVersion 23
-        targetSdkVersion 34
+        // Navigation SDK supports a minimum of SDK 24.
+        minSdkVersion 24
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
         // Set this to the languages you actually use, otherwise you'll include resource strings
@@ -93,7 +93,7 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
 
     // And dependencies.
-    api "androidx.appcompat:appcompat:1.6.1"
+    api "androidx.appcompat:appcompat:1.7.1"
     api "androidx.cardview:cardview:1.0.0"
     api "androidx.constraintlayout:constraintlayout:2.1.4"
     api "androidx.customview:customview:1.1.0"
@@ -114,7 +114,7 @@ dependencies {
     api "joda-time:joda-time:2.10.14"
     // Also include the Google Places SDK, which is used by this example, but
     // isn't required by the Navigation SDK.
-    api "com.google.android.libraries.places:places:2.5.0"
+    api "com.google.android.libraries.places:places:4.0.0"
     api "com.google.android.material:material:1.12.0"
     api 'org.jetbrains.kotlin:kotlin-reflect:2.1.10'
     api 'org.jetbrains.kotlin:kotlin-stdlib:2.1.10'

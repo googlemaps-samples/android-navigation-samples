@@ -25,6 +25,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.libraries.navigation.NavigationApi
 import com.google.android.libraries.navigation.NavigationApi.NavigatorListener
@@ -35,6 +36,7 @@ import com.google.android.libraries.navigation.SupportNavigationFragment
 import com.google.android.libraries.navigation.Waypoint
 import com.google.android.libraries.navigation.Waypoint.UnsupportedPlaceIdException
 import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.model.PlaceTypes
 import java.lang.ref.WeakReference
 
 /**
@@ -60,6 +62,14 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_swapping_map_and_nav)
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+      listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.container)))
+    )
+
     mapFragment = SupportMapFragment()
     navigationFragment = SupportNavigationFragment()
 
@@ -125,7 +135,7 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
    */
   private fun navigateToPlace(place: Place) {
     val waypoint: Waypoint? =
-      if (place.types?.contains(Place.Type.GEOCODE) == true) {
+      if (place.placeTypes?.contains(PlaceTypes.GEOCODE) == true) {
         // Show an example of setting a destination Lat-Lng
         // Note: Setting LatLng destinations can result in poor routing quality/ETA calculation.
         // Wherever possible you should use a Place ID to describe the destination accurately.

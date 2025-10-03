@@ -22,12 +22,21 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 
 /** Main activity that lets the user choose a demo to launch. */
 class MainActivity : AppCompatActivity() {
   public override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.main)
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+      listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.main_layout_container)))
+    )
+
     val listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, DEMOS.keys.toList())
     val listView = findViewById<ListView>(R.id.list_view)
     listView.adapter = listAdapter

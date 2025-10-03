@@ -19,6 +19,7 @@ package com.example.navigationapidemo
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
@@ -30,6 +31,14 @@ class PlacePickerActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_place_picker)
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+      listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.layout_container)))
+    )
+
     // Initialize the AutocompleteSupportFragment.
     val autocompleteFragment =
       supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)

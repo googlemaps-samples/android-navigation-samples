@@ -25,6 +25,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -32,6 +33,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how UI settings can be toggled. */
 public class UiSettingsDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -60,11 +62,13 @@ public class UiSettingsDemoActivity extends AppCompatActivity implements OnMapRe
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.ui_settings_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.ui_settings_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       mapFragment.getMapAsync(this);
@@ -251,5 +255,14 @@ public class UiSettingsDemoActivity extends AppCompatActivity implements OnMapRe
   private void updateMapLocationFeatures() {
     map.setMyLocationEnabled(myLocationLayerCheckbox.isChecked());
     uiSettings.setMyLocationButtonEnabled(myLocationButtonCheckbox.isChecked());
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.map_container)).build()));
   }
 }

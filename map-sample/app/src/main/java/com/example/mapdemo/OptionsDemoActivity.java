@@ -18,6 +18,8 @@ package com.example.mapdemo;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
+import com.google.common.collect.ImmutableList;
 
 /** An activity that creates a map with some initial options. */
 public final class OptionsDemoActivity extends AppCompatActivity {
@@ -33,5 +35,12 @@ public final class OptionsDemoActivity extends AppCompatActivity {
     } else {
       setContentView(R.layout.options_demo_maps_flavor);
     }
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

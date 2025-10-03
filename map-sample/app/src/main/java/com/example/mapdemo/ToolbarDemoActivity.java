@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
@@ -34,6 +35,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how to control the Map Toolbar. */
 public class ToolbarDemoActivity extends AppCompatActivity
@@ -62,12 +64,14 @@ public class ToolbarDemoActivity extends AppCompatActivity
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.toolbar_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
       OnMapAndViewReadyListener unused = new OnMapAndViewReadyListener(navFragment, this);
     } else {
       setContentView(R.layout.toolbar_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
@@ -190,5 +194,14 @@ public class ToolbarDemoActivity extends AppCompatActivity
               -30 + 10 * Math.sin(i * Math.PI / (numMarkers - 1)),
               135 - 10 * Math.cos(i * Math.PI / (numMarkers - 1))));
     }
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.map_container)).build()));
   }
 }

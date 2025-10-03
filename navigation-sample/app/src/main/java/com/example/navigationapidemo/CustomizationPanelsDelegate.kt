@@ -273,15 +273,16 @@ internal object CustomizationPanelsDelegate {
   }
 
   fun Navigator.logDebugInfo() {
-    if (currentRouteSegment != null) {
-      val stringifiedCurrentRouteSegment =
+    currentRouteSegment?.let {
+      Log.i(
+        TAG,
         MoreObjects.toStringHelper("RouteSegment")
-          .add("Destination LatLng", currentRouteSegment.destinationLatLng)
-          .add("Destination Waypoint", currentRouteSegment.destinationWaypoint)
-          .add("Traffic Data", currentRouteSegment.trafficData)
-          .add("List<LatLng> for segment", currentRouteSegment.latLngs)
-          .toString()
-      Log.i(TAG, stringifiedCurrentRouteSegment)
+          .add("Destination LatLng", it.destinationLatLng)
+          .add("Destination Waypoint", it.destinationWaypoint)
+          .add("Traffic Data", it.trafficData)
+          .add("List<LatLng> for segment", it.latLngs)
+          .toString(),
+      )
     }
 
     val stringifiedTraveledRoute =
@@ -290,14 +291,15 @@ internal object CustomizationPanelsDelegate {
         .toString()
     Log.i(TAG, stringifiedTraveledRoute)
 
-    if (currentTimeAndDistance != null) {
-      val stringifiedCurrentTimeAndDistance =
-        MoreObjects.toStringHelper(currentTimeAndDistance)
-          .add("Delay severity", currentTimeAndDistance.delaySeverity)
-          .add("Meters", currentTimeAndDistance.meters)
-          .add("Seconds", currentTimeAndDistance.seconds)
-          .toString()
-      Log.i(TAG, stringifiedCurrentTimeAndDistance)
+    currentTimeAndDistance?.let {
+      Log.i(
+        TAG,
+        MoreObjects.toStringHelper(it)
+          .add("Delay severity", it.delaySeverity)
+          .add("Meters", it.meters)
+          .add("Seconds", it.seconds)
+          .toString(),
+      )
     }
   }
 

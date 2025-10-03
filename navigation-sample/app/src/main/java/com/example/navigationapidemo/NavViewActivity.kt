@@ -29,6 +29,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.navigationapidemo.CustomizationPanelsDelegate.logDebugInfo
+import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 import com.google.android.libraries.navigation.NavigationApi
 import com.google.android.libraries.navigation.NavigationApi.NavigatorListener
 import com.google.android.libraries.navigation.NavigationView
@@ -38,6 +39,7 @@ import com.google.android.libraries.navigation.SimulationOptions
 import com.google.android.libraries.navigation.Waypoint
 import com.google.android.libraries.navigation.Waypoint.UnsupportedPlaceIdException
 import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.model.PlaceTypes
 import java.lang.Exception
 
 /**
@@ -61,6 +63,13 @@ class NavViewActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_nav_view)
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+      listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.nav_view_layout_container)))
+    )
 
     navView = findViewById(R.id.navigation_view)
 
@@ -152,20 +161,17 @@ class NavViewActivity : AppCompatActivity() {
     )
 
     withMapAsync {
-        CustomizationPanelsDelegate.setUpCameraPerspectiveSpinner(
-          this@NavViewActivity,
-          map::followMyLocation,
-        )
-        // The logic below simply helps keep the UI in tune with the underlying SDK state.
-        CustomizationPanelsDelegate.registerOnCameraFollowLocationCallback(
-          this@NavViewActivity,
-          map,
-        )
+      CustomizationPanelsDelegate.setUpCameraPerspectiveSpinner(
+        this@NavViewActivity,
+        map::followMyLocation,
+      )
+      // The logic below simply helps keep the UI in tune with the underlying SDK state.
+      CustomizationPanelsDelegate.registerOnCameraFollowLocationCallback(this@NavViewActivity, map)
 
-        CustomizationPanelsDelegate.registerOnNavigationUiChangedListener(
-          this@NavViewActivity,
-          navView::addOnNavigationUiChangedListener,
-        )
+      CustomizationPanelsDelegate.registerOnNavigationUiChangedListener(
+        this@NavViewActivity,
+        navView::addOnNavigationUiChangedListener,
+      )
     }
   }
 
@@ -201,7 +207,7 @@ class NavViewActivity : AppCompatActivity() {
    */
   private fun navigateToPlace(place: Place) {
     val waypoint: Waypoint? =
-      if (place.types?.contains(Place.Type.GEOCODE) == true) {
+      if (place.getPlaceTypes()?.contains(PlaceTypes.GEOCODE) == true) {
         // An example of setting a destination via Lat-Lng.
         // Note: Setting LatLng destinations can result in poor routing quality/ETA calculation.
         // Wherever possible you should use a Place ID to describe the destination accurately.

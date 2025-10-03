@@ -19,9 +19,11 @@ package com.example.mapdemo;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.StreetViewPanoramaOptions;
 import com.google.android.gms.maps.StreetViewPanoramaView;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how to create a simple activity with streetview */
 public class StreetViewPanoramaViewDemoActivity extends AppCompatActivity {
@@ -44,6 +46,12 @@ public class StreetViewPanoramaViewDemoActivity extends AppCompatActivity {
     addContentView(
         streetViewPanoramaView,
         new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default forAndroid
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(EdgeToEdgeMarginConfig.builder().setView(streetViewPanoramaView).build()));
 
     streetViewPanoramaView.onCreate(savedInstanceState);
   }

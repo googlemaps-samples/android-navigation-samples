@@ -29,6 +29,7 @@ import androidx.activity.result.contract.ActivityResultContracts.RequestMultiple
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 import com.google.android.libraries.places.api.Places
 import java.util.concurrent.TimeUnit
 
@@ -38,6 +39,14 @@ class SplashScreenActivity : AppCompatActivity() {
     super.onCreate(bundle)
     Places.initialize(applicationContext, getApiKeyFromMetaData())
     setContentView(R.layout.activity_splash_screen)
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+      listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.splash_image_container)))
+    )
+
     val imageView = findViewById<ImageView>(R.id.splash_image)
 
     Glide.with(this)
