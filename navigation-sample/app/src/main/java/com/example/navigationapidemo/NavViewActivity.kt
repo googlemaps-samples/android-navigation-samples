@@ -53,6 +53,7 @@ class NavViewActivity : AppCompatActivity() {
   var pendingNavActions = mutableListOf<InitializedNavRunnable>()
   private var arrivalListener: Navigator.ArrivalListener? = null
   private var routeChangedListener: Navigator.RouteChangedListener? = null
+  private var navigationSessionListener: Navigator.NavigationSessionListener? = null
 
   // Only used to demo the turn-by-turn nav forwarding feature.
   var navInfoDisplayFragment: Fragment? = null
@@ -192,6 +193,14 @@ class NavViewActivity : AppCompatActivity() {
           showToast("onRouteChanged: the driver's route changed")
         }
       navigator.addRouteChangedListener(routeChangedListener)
+
+      navigationSessionListener =
+        Navigator.NavigationSessionListener {
+          // Enable voice audio guidance (through the device speaker)
+          navigator.setAudioGuidance(Navigator.AudioGuidance.VOICE_ALERTS_AND_GUIDANCE)
+        }
+
+      navigator.addNavigationSessionListener(navigationSessionListener)
     }
   }
 
@@ -225,9 +234,6 @@ class NavViewActivity : AppCompatActivity() {
           RouteStatus.OK -> {
             // Hide the toolbar to maximize the navigation UI
             actionBar?.hide()
-
-            // Enable voice audio guidance (through the device speaker)
-            navigator.setAudioGuidance(Navigator.AudioGuidance.VOICE_ALERTS_AND_GUIDANCE)
 
             // Simulate vehicle progress along the route (for demo/debug builds)
             if (BuildConfig.DEBUG) {
@@ -295,6 +301,10 @@ class NavViewActivity : AppCompatActivity() {
       }
       if (routeChangedListener != null) {
         navigator.removeRouteChangedListener(routeChangedListener)
+      }
+
+      if (navigationSessionListener != null) {
+        navigator.removeNavigationSessionListener(navigationSessionListener)
       }
 
       navigator.simulator?.unsetUserLocation()
