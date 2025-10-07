@@ -31,12 +31,14 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanorama.OnStreetViewPanoramaChangeListener;
 import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation;
 import com.google.android.gms.maps.model.StreetViewSource;
+import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -92,6 +94,13 @@ public class StreetViewLatLngAnywhereDemoActivity extends AppCompatActivity
   protected void onCreate(@Nullable final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.street_view_latlng_demo);
+
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
 
     EditText panoLatLngText = (EditText) findViewById(R.id.pano_latlng_text);
     panoLatLngText.setText(DEFAULT_TEXT_FIELD);

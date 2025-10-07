@@ -16,7 +16,12 @@
 -->
 
 <!-- This can go anywhere in your layout. -->
-<com.google.android.libraries.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/map"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layout_container"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"/>
+  android:layout_height="match_parent">
+  <com.google.android.libraries.navigation.NavigationView
+    android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</FrameLayout>

@@ -29,6 +29,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.example.mapdemo.OnMapAndViewReadyListener.OnGlobalLayoutAndMapReadyListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -56,6 +57,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how different z-indices are shown on the map and how click handling is handled. */
 public class ZIndexDemoActivity extends AppCompatActivity
@@ -116,12 +118,14 @@ public class ZIndexDemoActivity extends AppCompatActivity
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.z_index_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       new OnMapAndViewReadyListener(navFragment, this);
     } else {
       setContentView(R.layout.z_index_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetup();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -306,6 +310,15 @@ public class ZIndexDemoActivity extends AppCompatActivity
       return false;
     }
     return true;
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 
   public void onVisibilityCheckboxClicked(View view) {

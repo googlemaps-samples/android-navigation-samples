@@ -18,12 +18,14 @@ package com.example.mapdemo;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /**
  * This shows how to retain a map across activity restarts (e.g., from screen rotations), which can
@@ -41,6 +43,7 @@ public class RetainMapDemoActivity extends AppCompatActivity implements OnMapRea
       // TODO: This behavior may not be supported presently. Legacy issue with NavigationView
       // results in a crash on rotation in this demo.
       setContentView(R.layout.basic_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       if (savedInstanceState == null) {
@@ -50,6 +53,7 @@ public class RetainMapDemoActivity extends AppCompatActivity implements OnMapRea
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.basic_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       if (savedInstanceState == null) {
@@ -63,5 +67,14 @@ public class RetainMapDemoActivity extends AppCompatActivity implements OnMapRea
   @Override
   public void onMapReady(GoogleMap map) {
     map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.layout_container)).build()));
   }
 }

@@ -17,15 +17,17 @@
 package com.example.mapdemo;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /**
  * Demonstrates how to instantiate a SupportNavigationFragment programmatically and add a marker to
@@ -49,20 +51,28 @@ public class ProgrammaticDemoActivity extends AppCompatActivity implements OnMap
           .getBooleanExtra(
               ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
               /* defaultValue= */ false)) {
+        setContentView(R.layout.programmatic_demo);
+
         // To programmatically add the map, we first create a SupportNavigationFragment.
         SupportNavigationFragment navFragment = new SupportNavigationFragment();
         // Then we add it using a FragmentTransaction.
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(android.R.id.content, navFragment, MAP_FRAGMENT_TAG);
+        fragmentTransaction.add(R.id.fragment_container, navFragment, MAP_FRAGMENT_TAG);
         fragmentTransaction.commit();
+
+        setMarginForEdgeToEdgeSupport();
         navFragment.getMapAsync(this);
       } else {
+        setContentView(R.layout.programmatic_demo);
+
         // To programmatically add the map, we first create a SupportMapFragment.
         SupportMapFragment mapFragment = new SupportMapFragment();
         // Then we add it using a FragmentTransaction.
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(android.R.id.content, mapFragment, MAP_FRAGMENT_TAG);
+        fragmentTransaction.add(R.id.fragment_container, mapFragment, MAP_FRAGMENT_TAG);
         fragmentTransaction.commit();
+
+        setMarginForEdgeToEdgeSupport();
         mapFragment.getMapAsync(this);
       }
     } else if (fragment instanceof SupportMapFragment) {
@@ -77,5 +87,16 @@ public class ProgrammaticDemoActivity extends AppCompatActivity implements OnMap
   @Override
   public void onMapReady(GoogleMap map) {
     map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder()
+                .setView(findViewById(R.id.fragment_container))
+                .build()));
   }
 }

@@ -16,8 +16,13 @@
 -->
 
 <!-- This can go anywhere in your layout (see other demos for some examples). -->
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/map"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layout_container"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  class="com.google.android.gms.maps.SupportMapFragment"/>
+  android:layout_height="match_parent">
+  <fragment
+    android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    class="com.google.android.gms.maps.SupportMapFragment"/>
+</FrameLayout>

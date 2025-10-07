@@ -18,9 +18,11 @@ package com.example.mapdemo;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.mapdemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.libraries.navigation.SupportNavigationFragment;
+import com.google.common.collect.ImmutableList;
 
 /** This shows how to create a simple activity with multiple maps on screen. */
 public class MultiMapDemoActivity extends AppCompatActivity {
@@ -32,9 +34,11 @@ public class MultiMapDemoActivity extends AppCompatActivity {
             ActivityIntents.EXTRA_SHOULD_USE_NAVIGATION_FLAVOR_FOR_DEMO,
             /* defaultValue= */ false)) {
       setContentView(R.layout.multimap_demo_nav_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetupForNavFlavor();
     } else {
       setContentView(R.layout.multimap_demo_maps_flavor);
+      setMarginForEdgeToEdgeSupport();
       performAdditionalSetupForMapsFlavor();
     }
   }
@@ -85,5 +89,14 @@ public class MultiMapDemoActivity extends AppCompatActivity {
         map ->
             map.setMapStyle(
                 new MapStyleOptions(getResources().getString(R.string.desaturated_style))));
+  }
+
+  private void setMarginForEdgeToEdgeSupport() {
+    // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
+    // V+ devices.
+    // No margins are set for pre-Android V devices.
+    EdgeToEdgeUtil.setMarginForEdgeToEdgeSupport(
+        ImmutableList.of(
+            EdgeToEdgeMarginConfig.builder().setView(findViewById(R.id.map_container)).build()));
   }
 }
