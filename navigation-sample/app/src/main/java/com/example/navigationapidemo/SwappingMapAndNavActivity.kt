@@ -58,6 +58,7 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
   private lateinit var mapFragment: SupportMapFragment
   private lateinit var navigationFragment: SupportNavigationFragment
   private var arrivalListener: Navigator.ArrivalListener? = null
+  private var navigationSessionListener: Navigator.NavigationSessionListener? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -158,9 +159,6 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
           // Hide the toolbar to maximize the navigation UI
           actionBar?.hide()
 
-          // Enable voice audio guidance (through the device speaker)
-          navigator?.setAudioGuidance(Navigator.AudioGuidance.VOICE_ALERTS_AND_GUIDANCE)
-
           // Simulate vehicle progress along the route (for demo/debug builds)
           if (BuildConfig.DEBUG) {
             navigator
@@ -207,7 +205,7 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
     }
   }
 
-  private fun registerArrivalListener() {
+  private fun registerListeners() {
     arrivalListener =
       Navigator.ArrivalListener {
         showToast("User has arrived at the destination!")
@@ -222,6 +220,14 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
         stopTripAndShowMapFragment(/* unused= */ null)
       }
     navigator?.addArrivalListener(arrivalListener)
+
+    navigationSessionListener =
+      Navigator.NavigationSessionListener {
+        // Enable voice audio guidance (through the device speaker)
+        navigator?.setAudioGuidance(Navigator.AudioGuidance.VOICE_ALERTS_AND_GUIDANCE)
+      }
+
+    navigator?.addNavigationSessionListener(navigationSessionListener)
   }
 
   // Detaches old fragment and adds a new fragment to the activity if it's not added otherwise
@@ -250,6 +256,10 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
     if (arrivalListener != null) {
       navigator?.removeArrivalListener(arrivalListener)
     }
+    if (navigationSessionListener != null) {
+      navigator?.removeNavigationSessionListener(navigationSessionListener)
+    }
+
     navigator?.simulator?.unsetUserLocation()
     navigator?.cleanup()
     super.onDestroy()
@@ -277,7 +287,7 @@ class SwappingMapAndNavActivity : AppCompatActivity() {
         if (swappingMapAndNavActivity != null) {
           swappingMapAndNavActivity.navigator = navigator
           // Register an arrival listener that returns back to a top-down map once the trip is over.
-          swappingMapAndNavActivity.registerArrivalListener()
+          swappingMapAndNavActivity.registerListeners()
         }
       }
 
