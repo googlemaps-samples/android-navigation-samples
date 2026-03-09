@@ -31,8 +31,25 @@ jobs:
       uses: jacobras/size-diff-action@v2
       with:
         path: map-sample/app/build/outputs/apk/release/app-release-unsigned.apk
+    - name: Comment map-sample size difference on PR
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        header: size-diff-map
+        message: |
+            ### APK diff: `map-sample app-release-unsigned.apk`
+            
+            ${{ steps.size-diff-map.outputs.summary }}
     - name: Calculate navigation-sample APK size difference
       id: size-diff-navigation
       uses: jacobras/size-diff-action@v2
       with:
         path: navigation-sample/app/build/outputs/apk/release/app-release-unsigned.apk
+    - name: Comment navigation-sample size difference on PR
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        header: size-diff-map
+        message: |
+            ### APK diff: `navigation-sample app-release-unsigned.apk`
+            
+            ${{ steps.size-diff-navigation.outputs.summary }}
+
