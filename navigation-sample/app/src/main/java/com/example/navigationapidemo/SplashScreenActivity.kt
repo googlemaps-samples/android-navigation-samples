@@ -37,7 +37,6 @@ import java.util.concurrent.TimeUnit
 class SplashScreenActivity : AppCompatActivity() {
   override fun onCreate(bundle: Bundle?) {
     super.onCreate(bundle)
-    Places.initializeWithNewPlacesApiEnabled(applicationContext, getApiKeyFromMetaData())
     setContentView(R.layout.activity_splash_screen)
 
     // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
@@ -123,22 +122,6 @@ class SplashScreenActivity : AppCompatActivity() {
     mainActivity.action = MAIN_ACTIVITY_INTENT_ACTION
     startActivity(mainActivity)
     finish()
-  }
-
-  /**
-   * Gets the Google Maps Api Key for the Places API from Metadata.
-   *
-   * @return The API key from AndroidManifest.
-   * @throws RuntimeException if meta data com.google.android.geo.API_KEY doesn't exist.
-   */
-  private fun getApiKeyFromMetaData(): String {
-    return try {
-      val packageInfo: PackageItemInfo =
-        getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA)
-      packageInfo.metaData.getString("com.google.android.geo.API_KEY")!!
-    } catch (e: PackageManager.NameNotFoundException) {
-      throw RuntimeException("com.google.android.geo.API_KEY not defined in Manifest")
-    }
   }
 
   companion object {
