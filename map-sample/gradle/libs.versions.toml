@@ -1,0 +1,52 @@
+[versions]
+agp = "8.13.2"
+kotlin = "2.1.10"
+secretsPlugin = "2.0.1"
+
+appcompat = "1.7.1"
+constraintlayout = "2.2.1"
+
+cronetFallback = "119.6045.31"
+leakcanary = "2.14"
+
+places = "5.1.1"
+material = "1.12.0"
+guava = "31.0.1-android"
+
+navSdk = "7.0.0"
+glide = "4.13.2"
+androidxLifecycle = "2.6.2"
+
+annotation = "1.7.0"
+desugarJdkLibs = "2.0.4"
+errorProneAnnotations = "2.11.0"
+autoValue = "1.6.2"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+
+google-maps-navigation = { group = "com.google.android.libraries.navigation", name = "navigation", version.ref = "navSdk" }
+google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
+
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+
+cronet-fallback = { group = "org.chromium.net", name = "cronet-fallback", version.ref = "cronetFallback" }
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs_nio", version.ref = "desugarJdkLibs" }
+error-prone-annotations = { group = "com.google.errorprone", name = "error_prone_annotations", version.ref = "errorProneAnnotations" }
+auto-value-annotations = { group = "com.google.auto.value", name = "auto-value-annotations", version.ref = "autoValue" }
+auto-value-processor = { group = "com.google.auto.value", name = "auto-value", version.ref = "autoValue" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+maps-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin" }
