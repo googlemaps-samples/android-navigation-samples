@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit
 class SplashScreenActivity : AppCompatActivity() {
   override fun onCreate(bundle: Bundle?) {
     super.onCreate(bundle)
-    Places.initialize(applicationContext, getApiKeyFromMetaData())
+    Places.initializeWithNewPlacesApiEnabled(applicationContext, getApiKeyFromMetaData())
     setContentView(R.layout.activity_splash_screen)
 
     // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android

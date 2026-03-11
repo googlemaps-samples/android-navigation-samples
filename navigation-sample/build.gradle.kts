@@ -15,40 +15,23 @@
  */
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        mavenCentral()
-        google()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.7.3'
-        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id 'org.jetbrains.kotlin.android' version '2.1.10' apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.maps.secrets) apply false
 }
 
 allprojects {
-    repositories {
-        mavenCentral()
-    }
     // Required: you must exclude the Google play service Maps SDK from
     // your transitive dependencies. This is to ensure there won't be
     // multiple copies of Google Maps SDK in your binary, as navigation SDK
     // already bundles the Google Maps SDK.
-    configurations {
-        implementation {
-            exclude group: 'com.google.android.gms', module: 'play-services-maps'
-        }
+    configurations.all {
+        exclude(group = "com.google.android.gms", module = "play-services-maps")
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.register<Delete>("clean") {
+    delete(layout.buildDirectory)
 }

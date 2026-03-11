@@ -2,3 +2,5 @@ build/
 .gradle/
 local.properties
 .idea/
+navigation-sample/secrets.properties
+BOB_DATA/
