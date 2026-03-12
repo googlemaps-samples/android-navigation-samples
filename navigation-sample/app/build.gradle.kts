@@ -94,6 +94,9 @@ dependencies {
     // isn't required by the Navigation SDK.
     implementation(libs.google.places)
     implementation(libs.google.material)
+    // If you include the Maps Utils library, you must exclude the independent
+    // play-services-maps dependency, as the Navigation SDK provides its own
+    // bundled, compatible Map implementation.
     implementation(libs.google.maps.utils) {
         exclude(group = "com.google.android.gms", module = "play-services-maps")
     }
