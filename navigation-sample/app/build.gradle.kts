@@ -94,6 +94,9 @@ dependencies {
     // isn't required by the Navigation SDK.
     implementation(libs.google.places)
     implementation(libs.google.material)
+    implementation(libs.google.maps.utils) {
+        exclude(group = "com.google.android.gms", module = "play-services-maps")
+    }
 
     implementation(libs.kotlin.stdlib)
     implementation(libs.guava)

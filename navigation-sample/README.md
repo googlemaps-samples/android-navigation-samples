@@ -8,13 +8,12 @@ Before building and running the sample app, you need a Google Cloud Project with
 
 ### 1. Enable Required APIs
 Go to the [Google Cloud Console](https://console.cloud.google.com/) and enable the following APIs for your project:
-*   **Navigation SDK for Android**
+*   **Navigation SDK**
 *   **Places API (New)** (Required for the location search features)
-*   **Maps SDK for Android** (Often required alongside Navigation)
 
 ### 2. Configure Your API Key
 1. Generate an API Key in the Google Cloud Console (APIs & Services > Credentials).
-2. For security, restrict this API key to your Android app's signing certificate and package name (`com.example.navigationapidemo`).
+2. For security, we recommend restricting this API key to your Android app's signing certificate and package name (`com.example.navigationapidemo`).
 3. Create a file named `secrets.properties` in the root directory of this project (the folder containing `build.gradle.kts` and `settings.gradle.kts`).
 4. Add your API key to `secrets.properties` using the following format:
    ```properties

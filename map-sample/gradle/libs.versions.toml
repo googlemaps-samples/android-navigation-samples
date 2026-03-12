@@ -1,6 +1,5 @@
 [versions]
 agp = "8.13.2"
-androidxLifecycle = "2.10.0"
 annotation = "1.9.1"
 appcompat = "1.7.1"
 autoValue = "1.11.1"
@@ -14,7 +13,6 @@ kotlin = "2.1.10"
 leakcanary = "2.14"
 material = "1.13.0"
 navSdk = "7.4.0"
-places = "5.1.1"
 secretsPlugin = "2.0.1"
 
 [libraries]
@@ -30,7 +28,6 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 google-maps-navigation = { group = "com.google.android.libraries.navigation", name = "navigation", version.ref = "navSdk" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
