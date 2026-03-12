@@ -1,0 +1,38 @@
+[versions]
+agp = "8.13.2"
+androidxLifecycle = "2.10.0"
+annotation = "1.9.1"
+appcompat = "1.7.1"
+constraintlayout = "2.2.1"
+cronetFallback = "143.7445.0"
+desugarJdkLibs = "2.1.5"
+glide = "5.0.5"
+guava = "33.5.0-android"
+kotlin = "2.1.10"
+leakcanary = "2.14"
+material = "1.13.0"
+mapsUtils = "3.9.0"
+navSdk = "7.4.0"
+places = "5.1.1"
+secretsPlugin = "2.0.1"
+
+[libraries]
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+cronet-fallback = { group = "org.chromium.net", name = "cronet-fallback", version.ref = "cronetFallback" }
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs_nio", version.ref = "desugarJdkLibs" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+google-maps-navigation = { group = "com.google.android.libraries.navigation", name = "navigation", version.ref = "navSdk" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+google-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "mapsUtils" }
+google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+maps-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin" }

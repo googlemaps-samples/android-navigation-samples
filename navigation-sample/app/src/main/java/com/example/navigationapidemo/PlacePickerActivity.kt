@@ -46,7 +46,7 @@ class PlacePickerActivity : AppCompatActivity() {
 
     // Specify the types of place data to return.
     autocompleteFragment?.setPlaceFields(
-      Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.TYPES)
+      Arrays.asList(Place.Field.ID, Place.Field.DISPLAY_NAME, Place.Field.LOCATION, Place.Field.TYPES)
     )
 
     // Set up a PlaceSelectionListener to handle the response.
