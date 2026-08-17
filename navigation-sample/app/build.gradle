@@ -122,7 +122,7 @@ dependencies {
 
     annotationProcessor "androidx.annotation:annotation:1.7.0"
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.0.4'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.1.5'
 }
 
 secrets {
