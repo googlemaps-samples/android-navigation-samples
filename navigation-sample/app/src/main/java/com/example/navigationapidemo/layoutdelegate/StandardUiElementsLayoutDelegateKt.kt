@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-@file:Suppress("PackageName")
-
 package com.example.navigationapidemo.layoutdelegate
 
 import android.content.Context

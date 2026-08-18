@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-@file:Suppress("PackageName")
-@file:SuppressLint("PackageName")
-
 package com.example.navigationapidemo.layoutdelegate
 
 import android.annotation.SuppressLint
