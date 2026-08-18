@@ -21,7 +21,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 ext {
     androidxLifecycleVersion = "2.6.2"
     glideVersion = "4.13.2"
-    navSdkVersion = "7.0.0"
+    navSdkVersion = "7.9.0"
 }
 
 android {
@@ -117,12 +117,12 @@ dependencies {
     api "joda-time:joda-time:2.10.14"
     api "com.google.android.material:material:1.12.0"
     api 'org.jetbrains.kotlin:kotlin-reflect:2.1.10'
-    api 'org.jetbrains.kotlin:kotlin-stdlib:2.1.10'
+    api 'org.jetbrains.kotlin:kotlin-stdlib:2.3.0'
 
     annotationProcessor "androidx.annotation:annotation:1.7.0"
     annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
 
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.0.4'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.1.5'
 }
 
 secrets {

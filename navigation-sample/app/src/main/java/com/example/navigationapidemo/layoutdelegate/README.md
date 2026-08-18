@@ -1,0 +1,1 @@
+This directory contains sample layout delegate implementations demonstrating how to use the Navigation SDK Layout Customization API. These samples serve as reference implementations and functional starting points that developers can use or customize in their navigation applications.
