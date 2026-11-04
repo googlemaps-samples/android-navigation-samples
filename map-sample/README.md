@@ -17,21 +17,35 @@ SupportNavigationFragment as part of the UI.
 This is to showcase that NavigationView supports the behaviors you may have come
 to expect from your previous usage of the public Maps APIs.
 
-## Installation
+## Installation & Setup
 
--   Open this sample app in Android Studio.
+### Prerequisites
+Before running this app, ensure you have enabled the following **three** APIs in your Google Cloud Console for your project:
+1. **Google Navigation SDK**
+2. **Maps SDK for Android**
+3. **Places API (New)**
 
--   This demo app is compatible with a range of supported Navigation SDK
-    versions, as indicated by the name of the containing .zip file in Google
-    Drive.
+### 1. API Key Configuration
+This project uses the [Secrets Gradle Plugin for Android](https://github.com/google/secrets-gradle-plugin) to safely inject your API key.
 
--   A default compatible version number has been supplied in the app-level
-    `build.gradle` file under the variable named `navSdkVersion`. Make sure to
-    update that variable's value to the version of NavSDK you'd like to test.
+1. Create a `secrets.properties` file in the `map-sample` directory (this file is gitignored).
+2. Add your authorized Google Maps API key to this file:
+   ```properties
+   MAPS_API_KEY=AIzaSyYourKeyHere...
+   ```
 
--   Update the YOUR_API_KEY value in local.defaults.properties to your own API
-    key that has been authorized to use the Google Navigation SDK. Visit
-    https://developers.google.com/maps/documentation/android-sdk/start#get-key
-    for instructions on how to get your own key.
+### 2. Dependency Management
+This app uses a modern Gradle Version Catalog (`gradle/libs.versions.toml`). To modify the Navigation SDK version or other library versions, update the corresponding `version` property within this file.
 
--   Build and run the sample application.
+### 3. Build and Run
+You can open this project in **Android Studio** and click "Run", or use the command line directly:
+
+To compile the app from the terminal:
+```bash
+./gradlew clean assembleDebug
+```
+
+To automatically compile, install, and launch the demo app on a connected emulator or physical device, run:
+```bash
+./gradlew clean :app:installAndLaunch
+```

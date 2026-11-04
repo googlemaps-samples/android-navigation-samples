@@ -1,4 +1,6 @@
 build/
 .gradle/
 local.properties
+secrets.properties
 .idea/
+BOB_DATA/
