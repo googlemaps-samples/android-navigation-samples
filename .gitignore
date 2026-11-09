@@ -1,4 +1,6 @@
 build/
 .gradle/
+.kotlin/
 local.properties
+secrets.properties
 .idea/

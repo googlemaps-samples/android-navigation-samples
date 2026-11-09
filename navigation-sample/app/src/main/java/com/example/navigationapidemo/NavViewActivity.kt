@@ -211,7 +211,7 @@ class NavViewActivity : AppCompatActivity() {
         // An example of setting a destination via Lat-Lng.
         // Note: Setting LatLng destinations can result in poor routing quality/ETA calculation.
         // Wherever possible you should use a Place ID to describe the destination accurately.
-        place.latLng?.let { Waypoint.builder().setLatLng(it.latitude, it.longitude).build() }
+        place.location?.let { Waypoint.builder().setLatLng(it.latitude, it.longitude).build() }
       } else {
         // Set a destination by using a Place ID (the recommended method)
         try {

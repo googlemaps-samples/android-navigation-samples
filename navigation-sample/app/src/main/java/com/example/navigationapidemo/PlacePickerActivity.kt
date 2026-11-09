@@ -18,16 +18,69 @@ package com.example.navigationapidemo
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
-import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import java.util.Arrays
+import com.google.android.libraries.places.api.net.FetchPlaceRequest
+import com.google.android.libraries.places.widget.PlaceAutocomplete
+import com.google.android.libraries.places.widget.PlaceAutocompleteActivity
 
-/** An activity to host AutocompleteSupportFragment from Places SDK. */
+/** An activity to launch PlaceAutocomplete from Places SDK and fetch the selected Place. */
 class PlacePickerActivity : AppCompatActivity() {
+
+  private val autocompleteLauncher =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+      val data = result.data
+      when (result.resultCode) {
+        RESULT_OK -> {
+          val prediction = data?.let { PlaceAutocomplete.getPredictionFromIntent(it) }
+          val sessionToken = data?.let { PlaceAutocomplete.getSessionTokenFromIntent(it) }
+          if (prediction != null) {
+            val fields =
+              listOf(
+                Place.Field.ID,
+                Place.Field.DISPLAY_NAME,
+                Place.Field.LOCATION,
+                Place.Field.TYPES,
+              )
+            val request =
+              FetchPlaceRequest.builder(prediction.placeId, fields)
+                .setSessionToken(sessionToken)
+                .build()
+            Places.createClient(this)
+              .fetchPlace(request)
+              .addOnSuccessListener { response ->
+                setResult(RESULT_OK, Intent().putExtra("PLACE", response.place))
+                finish()
+              }
+              .addOnFailureListener { exception ->
+                Log.e(TAG, "Failed to fetch place details for ${prediction.placeId}", exception)
+                setResult(RESULT_CANCELED)
+                finish()
+              }
+          } else {
+            setResult(RESULT_CANCELED)
+            finish()
+          }
+        }
+        PlaceAutocompleteActivity.RESULT_ERROR -> {
+          val status = data?.let { PlaceAutocomplete.getResultStatusFromIntent(it) }
+          Log.e(TAG, "PlaceAutocomplete failed with status: $status")
+          setResult(RESULT_CANCELED, Intent().putExtra("STATUS", status))
+          finish()
+        }
+        else -> {
+          setResult(RESULT_CANCELED)
+          finish()
+        }
+      }
+    }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_place_picker)
@@ -39,35 +92,30 @@ class PlacePickerActivity : AppCompatActivity() {
       listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.layout_container)))
     )
 
-    // Initialize the AutocompleteSupportFragment.
-    val autocompleteFragment =
-      supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
-        as AutocompleteSupportFragment?
+    if (!Places.isInitialized()) {
+      Log.e(TAG, "Places SDK is not initialized; check that MAPS_API_KEY is configured.")
+      Toast.makeText(
+          this,
+          "Places SDK is not initialized. Check your MAPS_API_KEY configuration.",
+          Toast.LENGTH_LONG,
+        )
+        .show()
+      setResult(RESULT_CANCELED)
+      finish()
+      return
+    }
 
-    // Specify the types of place data to return.
-    autocompleteFragment?.setPlaceFields(
-      Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.TYPES)
-    )
-
-    // Set up a PlaceSelectionListener to handle the response.
-    autocompleteFragment?.setOnPlaceSelectedListener(
-      object : PlaceSelectionListener {
-        override fun onPlaceSelected(place: Place) {
-          setResult(RESULT_OK, Intent().putExtra("PLACE", place))
-          finish()
-        }
-
-        override fun onError(status: Status) {
-          setResult(RESULT_CANCELED, Intent().putExtra("STATUS", status))
-          finish()
-        }
-      }
-    )
+    if (savedInstanceState == null) {
+      val autocompleteIntent = PlaceAutocomplete.IntentBuilder().build(this)
+      autocompleteLauncher.launch(autocompleteIntent)
+    }
   }
 
   companion object {
+    private const val TAG = "PlacePickerActivity"
+
     fun getPlace(data: Intent): Place {
-      return data.getParcelableExtra("PLACE")!!
+      return requireNotNull(IntentCompat.getParcelableExtra(data, "PLACE", Place::class.java))
     }
   }
 }

@@ -18,7 +18,6 @@ package com.example.navigationapidemo
 
 import android.Manifest.permission
 import android.content.Intent
-import android.content.pm.PackageItemInfo
 import android.content.pm.PackageManager
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
@@ -30,14 +29,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
-import com.google.android.libraries.places.api.Places
 import java.util.concurrent.TimeUnit
 
 /** The main activity showing a splash screen and requesting for location permission. */
 class SplashScreenActivity : AppCompatActivity() {
   override fun onCreate(bundle: Bundle?) {
     super.onCreate(bundle)
-    Places.initialize(applicationContext, getApiKeyFromMetaData())
     setContentView(R.layout.activity_splash_screen)
 
     // Margins are only set if the edge-to-edge mode is enabled, it's enabled by default for Android
@@ -123,22 +120,6 @@ class SplashScreenActivity : AppCompatActivity() {
     mainActivity.action = MAIN_ACTIVITY_INTENT_ACTION
     startActivity(mainActivity)
     finish()
-  }
-
-  /**
-   * Gets the Google Maps Api Key for the Places API from Metadata.
-   *
-   * @return The API key from AndroidManifest.
-   * @throws RuntimeException if meta data com.google.android.geo.API_KEY doesn't exist.
-   */
-  private fun getApiKeyFromMetaData(): String {
-    return try {
-      val packageInfo: PackageItemInfo =
-        getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA)
-      packageInfo.metaData.getString("com.google.android.geo.API_KEY")!!
-    } catch (e: PackageManager.NameNotFoundException) {
-      throw RuntimeException("com.google.android.geo.API_KEY not defined in Manifest")
-    }
   }
 
   companion object {
