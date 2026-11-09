@@ -1,7 +1,6 @@
 [versions]
 agp = "9.2.0"
 androidxLifecycle = "2.10.0"
-annotation = "1.10.0"
 appcompat = "1.8.0"
 cardview = "1.0.0"
 constraintlayout = "2.2.2"
@@ -29,7 +28,6 @@ viewpager2 = "1.1.0"
 window = "1.5.1"
 
 [libraries]
-androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -50,7 +48,6 @@ datatransport-backend-cct = { group = "com.google.android.datatransport", name =
 datatransport-runtime = { group = "com.google.android.datatransport", name = "transport-runtime", version.ref = "datatransport" }
 desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs_nio", version.ref = "desugarJdkLibs" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 google-maps-navigation = { group = "com.google.android.libraries.navigation", name = "navigation", version.ref = "navSdk" }
 google-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "mapsUtils" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -62,5 +59,4 @@ leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", v
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 maps-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin" }

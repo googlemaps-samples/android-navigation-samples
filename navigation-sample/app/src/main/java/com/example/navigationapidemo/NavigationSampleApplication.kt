@@ -19,27 +19,40 @@ package com.example.navigationapidemo
 import android.app.Application
 import android.content.pm.PackageItemInfo
 import android.content.pm.PackageManager
+import android.util.Log
 import com.google.android.libraries.places.api.Places
 
 class NavigationSampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        Places.initializeWithNewPlacesApiEnabled(applicationContext, getApiKeyFromMetaData())
+        val key = getApiKeyFromMetaData()
+        if (key.isNullOrBlank() || key == "YOUR_API_KEY" || key == "DEFAULT_API_KEY") {
+            Log.e(
+                TAG,
+                "MAPS_API_KEY is missing or not configured in secrets.properties; skipping Places initialization.",
+            )
+            return
+        }
+        Places.initializeWithNewPlacesApiEnabled(applicationContext, key)
     }
 
     /**
      * Gets the Google Maps Api Key for the Places API from Metadata.
      *
-     * @return The API key from AndroidManifest.
-     * @throws RuntimeException if metadata com.google.android.geo.API_KEY doesn't exist.
+     * @return The API key from AndroidManifest, or null if not configured.
      */
-    private fun getApiKeyFromMetaData(): String {
+    private fun getApiKeyFromMetaData(): String? {
         return try {
             val packageInfo: PackageItemInfo =
                 packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
-            packageInfo.metaData.getString("com.google.android.geo.API_KEY")!!
+            packageInfo.metaData?.getString("com.google.android.geo.API_KEY")
         } catch (e: PackageManager.NameNotFoundException) {
-            throw RuntimeException("com.google.android.geo.API_KEY not defined in Manifest")
+            Log.e(TAG, "com.google.android.geo.API_KEY not defined in Manifest", e)
+            null
         }
+    }
+
+    companion object {
+        private const val TAG = "NavigationSampleApp"
     }
 }

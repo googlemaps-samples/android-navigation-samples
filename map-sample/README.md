@@ -20,10 +20,9 @@ to expect from your previous usage of the public Maps APIs.
 ## Installation & Setup
 
 ### Prerequisites
-Before running this app, ensure you have enabled the following **three** APIs in your Google Cloud Console for your project:
+Before running this app, ensure you have enabled the following **two** APIs in your Google Cloud Console for your project:
 1. **Google Navigation SDK**
 2. **Maps SDK for Android**
-3. **Places API (New)**
 
 ### 1. API Key Configuration
 This project uses the [Secrets Gradle Plugin for Android](https://github.com/google/secrets-gradle-plugin) to safely inject your API key.

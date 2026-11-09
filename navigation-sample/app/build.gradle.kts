@@ -123,8 +123,6 @@ dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.guava)
 
-    annotationProcessor(libs.androidx.annotation)
-    annotationProcessor(libs.glide.compiler)
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 }
 

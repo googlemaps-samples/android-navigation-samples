@@ -18,7 +18,6 @@ package com.example.navigationapidemo
 
 import android.Manifest.permission
 import android.content.Intent
-import android.content.pm.PackageItemInfo
 import android.content.pm.PackageManager
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
@@ -30,7 +29,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
-import com.google.android.libraries.places.api.Places
 import java.util.concurrent.TimeUnit
 
 /** The main activity showing a splash screen and requesting for location permission. */

@@ -18,8 +18,11 @@ package com.example.navigationapidemo
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.IntentCompat
 import com.example.navigationapidemo.EdgeToEdgeUtil.EdgeToEdgeMarginConfig
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -55,7 +58,8 @@ class PlacePickerActivity : AppCompatActivity() {
                 setResult(RESULT_OK, Intent().putExtra("PLACE", response.place))
                 finish()
               }
-              .addOnFailureListener {
+              .addOnFailureListener { exception ->
+                Log.e(TAG, "Failed to fetch place details for ${prediction.placeId}", exception)
                 setResult(RESULT_CANCELED)
                 finish()
               }
@@ -66,6 +70,7 @@ class PlacePickerActivity : AppCompatActivity() {
         }
         PlaceAutocompleteActivity.RESULT_ERROR -> {
           val status = data?.let { PlaceAutocomplete.getResultStatusFromIntent(it) }
+          Log.e(TAG, "PlaceAutocomplete failed with status: $status")
           setResult(RESULT_CANCELED, Intent().putExtra("STATUS", status))
           finish()
         }
@@ -87,6 +92,19 @@ class PlacePickerActivity : AppCompatActivity() {
       listOf(EdgeToEdgeMarginConfig(view = findViewById(R.id.layout_container)))
     )
 
+    if (!Places.isInitialized()) {
+      Log.e(TAG, "Places SDK is not initialized; check that MAPS_API_KEY is configured.")
+      Toast.makeText(
+          this,
+          "Places SDK is not initialized. Check your MAPS_API_KEY configuration.",
+          Toast.LENGTH_LONG,
+        )
+        .show()
+      setResult(RESULT_CANCELED)
+      finish()
+      return
+    }
+
     if (savedInstanceState == null) {
       val autocompleteIntent = PlaceAutocomplete.IntentBuilder().build(this)
       autocompleteLauncher.launch(autocompleteIntent)
@@ -94,8 +112,10 @@ class PlacePickerActivity : AppCompatActivity() {
   }
 
   companion object {
+    private const val TAG = "PlacePickerActivity"
+
     fun getPlace(data: Intent): Place {
-      return data.getParcelableExtra("PLACE")!!
+      return requireNotNull(IntentCompat.getParcelableExtra(data, "PLACE", Place::class.java))
     }
   }
 }
