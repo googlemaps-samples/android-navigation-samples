@@ -1,0 +1,64 @@
+[versions]
+agp = "9.2.0"
+androidxLifecycle = "2.10.0"
+annotation = "1.10.0"
+appcompat = "1.8.0"
+autoValue = "1.11.1"
+cardview = "1.0.0"
+constraintlayout = "2.2.2"
+cronetFallback = "143.7445.0"
+customview = "1.2.0"
+datatransport = "4.1.1"
+desugarJdkLibs = "2.1.5"
+errorProneAnnotations = "2.51.0"
+glide = "5.0.9"
+guava = "33.5.0-android"
+jodaTime = "2.15.0"
+kotlin = "2.3.0"
+leakcanary = "2.14"
+legacySupportV4 = "1.0.0"
+material = "1.14.0"
+mediarouter = "1.8.1"
+navSdk = "8.0.0"
+preference = "1.2.1"
+recyclerview = "1.4.0"
+secretsPlugin = "2.0.1"
+transition = "1.7.2"
+viewpager2 = "1.1.0"
+window = "1.5.1"
+
+[libraries]
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-customview = { group = "androidx.customview", name = "customview", version.ref = "customview" }
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-common-java8 = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "androidxLifecycle" }
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
+androidx-mediarouter = { group = "androidx.mediarouter", name = "mediarouter", version.ref = "mediarouter" }
+androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+androidx-transition = { group = "androidx.transition", name = "transition", version.ref = "transition" }
+androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
+androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
+auto-value-annotations = { group = "com.google.auto.value", name = "auto-value-annotations", version.ref = "autoValue" }
+auto-value-processor = { group = "com.google.auto.value", name = "auto-value", version.ref = "autoValue" }
+cronet-fallback = { group = "org.chromium.net", name = "cronet-fallback", version.ref = "cronetFallback" }
+datatransport-api = { group = "com.google.android.datatransport", name = "transport-api", version.ref = "datatransport" }
+datatransport-backend-cct = { group = "com.google.android.datatransport", name = "transport-backend-cct", version.ref = "datatransport" }
+datatransport-runtime = { group = "com.google.android.datatransport", name = "transport-runtime", version.ref = "datatransport" }
+desugar-jdk-libs = { group = "com.android.tools", name = "desugar_jdk_libs_nio", version.ref = "desugarJdkLibs" }
+error-prone-annotations = { group = "com.google.errorprone", name = "error_prone_annotations", version.ref = "errorProneAnnotations" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+google-maps-navigation = { group = "com.google.android.libraries.navigation", name = "navigation", version.ref = "navSdk" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
+joda-time = { group = "joda-time", name = "joda-time", version.ref = "jodaTime" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+maps-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsPlugin" }
