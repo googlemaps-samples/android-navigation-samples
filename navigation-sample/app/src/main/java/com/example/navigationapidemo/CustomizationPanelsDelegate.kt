@@ -128,7 +128,7 @@ internal object CustomizationPanelsDelegate {
     nightModeSpinner.adapter = nightModeAdapter
     nightModeSpinner.onItemSelectedListener =
       object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
           when (position) {
             0 -> {}
             1 -> onNightModeOptionSelected(ForceNightMode.AUTO)
@@ -172,7 +172,7 @@ internal object CustomizationPanelsDelegate {
         override var lastSetNonZeroPosition = 1
           private set
 
-        override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
           when (position) {
             0 -> {}
             1 -> {

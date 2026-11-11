@@ -14,11 +14,27 @@
  * limitations under the License.
  */
 
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.powerassert.gradle.PowerAssertCompilationFilter
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.power.assert)
     alias(libs.plugins.maps.secrets)
+}
+
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
+powerAssert {
+    functions = listOf(
+        "kotlin.assert",
+        "kotlin.require",
+        "kotlin.check",
+        "com.google.maps.android.robolectric.powerassert.assertGeo",
+        "com.google.maps.android.robolectric.powerassert.assertMap",
+        "com.google.maps.android.robolectric.powerassert.assertMarker",
+    )
+    compilationFilter = PowerAssertCompilationFilter.ALL
 }
 
 android {
@@ -41,6 +57,21 @@ android {
         // for all Navigation SDK supported languages.
         androidResources.localeFilters += "en"
         multiDexEnabled = true
+        manifestPlaceholders["MAPS_API_KEY"] = "DEFAULT_API_KEY"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+            all {
+                it.systemProperty(
+                    "maps.golden.record",
+                    System.getProperty("maps.golden.record") ?: "false",
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -112,6 +143,29 @@ dependencies {
     annotationProcessor(libs.glide.compiler)
 
     coreLibraryDesugaring(libs.desugar.jdk.libs)
+
+    // Unit tests: JUnit, Kotlin Power-Assert, Google Truth, Robolectric, and android-maps-testing
+    testImplementation(libs.junit)
+    testImplementation(libs.truth)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.androidx.test.ext.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.maps.testing.robolectric)
+    testImplementation(libs.maps.testing.golden)
+
+    // Instrumented & visual tests
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.truth)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.uiautomator)
+    androidTestImplementation(libs.maps.testing.golden)
+    androidTestImplementation(libs.maps.testing.visual)
 }
 
 secrets {

@@ -18,9 +18,10 @@
 
 plugins {
     alias(libs.plugins.android.application) apply false
-    // Required on the root classpath so AGP 9.2's built-in Kotlin support uses Kotlin 2.3.0
+    // Required on the root classpath so AGP 9.2's built-in Kotlin support uses Kotlin 2.4.21
     // (which can read Kotlin 2.4 metadata in Places SDK 6.0.2) instead of AGP's bundled Kotlin 2.2.10.
     alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.power.assert) apply false
     alias(libs.plugins.maps.secrets) apply false
 }
 
