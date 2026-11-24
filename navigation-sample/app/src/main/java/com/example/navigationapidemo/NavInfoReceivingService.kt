@@ -40,6 +40,7 @@ import com.google.android.libraries.mapsplatform.turnbyturn.model.NavInfo
 class NavInfoReceivingService : Service() {
   /** The messenger used by the service to receive nav step updates. */
   private lateinit var incomingMessenger: Messenger
+  private var handlerThread: HandlerThread? = null
 
   /**
    * Ensure you do not pass a strong reference to the outer service class. This will result in a
@@ -72,7 +73,14 @@ class NavInfoReceivingService : Service() {
   override fun onCreate() {
     val thread = HandlerThread("NavInfoReceivingService", Process.THREAD_PRIORITY_DEFAULT)
     thread.start()
+    handlerThread = thread
     incomingMessenger = Messenger(IncomingNavStepHandler(looper = thread.looper))
+  }
+
+  override fun onDestroy() {
+    handlerThread?.quitSafely()
+    handlerThread = null
+    super.onDestroy()
   }
 
   companion object {

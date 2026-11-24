@@ -79,17 +79,21 @@ public class PolylineDemoActivity extends AppCompatActivity
             /* defaultValue= */ false)) {
       setContentView(R.layout.polyline_demo_nav_flavor);
       setMarginForEdgeToEdgeSupport();
+      performAdditionalSetup();
       SupportNavigationFragment navigationFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navigationFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.polyline_demo_maps_flavor);
       setMarginForEdgeToEdgeSupport();
+      performAdditionalSetup();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       mapFragment.getMapAsync(this);
     }
+  }
 
+  private void performAdditionalSetup() {
     pagerAdapter = new PolylineControlFragmentPagerAdapter(getSupportFragmentManager());
     pager = (ViewPager) findViewById(R.id.pager);
     pager.setAdapter(pagerAdapter);

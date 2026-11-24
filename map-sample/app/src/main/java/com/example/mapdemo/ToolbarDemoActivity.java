@@ -65,6 +65,7 @@ public class ToolbarDemoActivity extends AppCompatActivity
             /* defaultValue= */ false)) {
       setContentView(R.layout.toolbar_demo_nav_flavor);
       setMarginForEdgeToEdgeSupport();
+      performAdditionalSetup();
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
@@ -72,17 +73,17 @@ public class ToolbarDemoActivity extends AppCompatActivity
     } else {
       setContentView(R.layout.toolbar_demo_maps_flavor);
       setMarginForEdgeToEdgeSupport();
+      performAdditionalSetup();
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
       OnMapAndViewReadyListener unused = new OnMapAndViewReadyListener(mapFragment, this);
     }
+  }
 
-    // Get checkbox references
+  private void performAdditionalSetup() {
     infoWindowCheckbox = (CheckBox) findViewById(R.id.add_info_window_to_new_marker);
-
-    enableGlobalToolbarCheckbox = ((CheckBox) findViewById(R.id.enable_toolbar_globally));
-
+    enableGlobalToolbarCheckbox = (CheckBox) findViewById(R.id.enable_toolbar_globally);
     focusMarkerOnClickCheckbox = (CheckBox) findViewById(R.id.focus_marker_on_click);
   }
 

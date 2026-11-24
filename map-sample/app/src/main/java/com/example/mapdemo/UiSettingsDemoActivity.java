@@ -63,19 +63,20 @@ public class UiSettingsDemoActivity extends AppCompatActivity implements OnMapRe
             /* defaultValue= */ false)) {
       setContentView(R.layout.ui_settings_demo_nav_flavor);
       setMarginForEdgeToEdgeSupport();
+      myLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
+      myLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.ui_settings_demo_maps_flavor);
       setMarginForEdgeToEdgeSupport();
+      myLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
+      myLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       mapFragment.getMapAsync(this);
     }
-
-    myLocationButtonCheckbox = (CheckBox) findViewById(R.id.mylocationbutton_toggle);
-    myLocationLayerCheckbox = (CheckBox) findViewById(R.id.mylocationlayer_toggle);
   }
 
   /** Returns whether the checkbox with the given id is checked. */
