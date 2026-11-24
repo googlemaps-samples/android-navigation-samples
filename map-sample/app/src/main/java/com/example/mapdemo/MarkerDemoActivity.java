@@ -339,7 +339,7 @@ public class MarkerDemoActivity extends AppCompatActivity
                 .draggable(true));
 
     // A few more markers for good measure.
-    perth = map.addMarker(new MarkerOptions().position(PERTH));
+    perth = map.addMarker(new MarkerOptions().position(PERTH).title("Perth"));
     adelaide =
         map.addMarker(
             new MarkerOptions()

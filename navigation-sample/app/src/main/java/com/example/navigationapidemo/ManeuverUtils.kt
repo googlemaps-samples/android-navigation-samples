@@ -178,13 +178,14 @@ object ManeuverUtils {
   fun getManeuverName(stepInfo: StepInfo): String? = maneuverInfoMap[stepInfo.maneuver]?.name
 
   /**
-   * Selects an appropriate icon for the maneuver of a given step.
+   * Selects an appropriate icon for the maneuver of a given step, falling back to
+   * [R.drawable.ic_road] if the maneuver code is unrecognized.
    *
    * @param stepInfo the step
    * @return the resource id of the selected maneuver icon
    */
   fun getManeuverIconResId(stepInfo: StepInfo): Int =
-    maneuverInfoMap.getValue(stepInfo.maneuver).iconResId
+    maneuverInfoMap[stepInfo.maneuver]?.iconResId ?: R.drawable.ic_road
 
   /** Stores the maneuver's name and icon resource id. */
   private class ManeuverInfo(val name: String, val iconResId: Int)

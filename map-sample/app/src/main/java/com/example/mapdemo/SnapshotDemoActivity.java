@@ -47,18 +47,18 @@ public class SnapshotDemoActivity extends FragmentActivity implements OnMapReady
             /* defaultValue= */ false)) {
       setContentView(R.layout.snapshot_demo_nav_flavor);
       setMarginForEdgeToEdgeSupport();
+      waitForMapLoadCheckBox = (CheckBox) findViewById(R.id.wait_for_map_load);
       SupportNavigationFragment navFragment =
           (SupportNavigationFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       navFragment.getMapAsync(this);
     } else {
       setContentView(R.layout.snapshot_demo_maps_flavor);
       setMarginForEdgeToEdgeSupport();
+      waitForMapLoadCheckBox = (CheckBox) findViewById(R.id.wait_for_map_load);
       SupportMapFragment mapFragment =
           (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
       mapFragment.getMapAsync(this);
     }
-
-    waitForMapLoadCheckBox = (CheckBox) findViewById(R.id.wait_for_map_load);
   }
 
   @Override

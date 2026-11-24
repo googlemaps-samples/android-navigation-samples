@@ -32,7 +32,7 @@ import com.google.common.collect.ImmutableList;
 /** Demonstrates the different base layers of a map. */
 public class LayersDemoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-  private static final String KEY_TAFFIC = "trafic";
+  private static final String KEY_TRAFFIC = "traffic";
   private static final String KEY_BUILDING = "building";
   private static final String KEY_STYLE_MAP = "style_map";
 
@@ -70,7 +70,7 @@ public class LayersDemoActivity extends AppCompatActivity implements OnMapReadyC
     buildingsCheckbox = findViewById(R.id.buildings);
     styleMapCheckbox = findViewById(R.id.styled_map);
     if (savedInstanceState != null) {
-      trafficCheckbox.setChecked(savedInstanceState.getBoolean(KEY_TAFFIC));
+      trafficCheckbox.setChecked(savedInstanceState.getBoolean(KEY_TRAFFIC));
       buildingsCheckbox.setChecked(savedInstanceState.getBoolean(KEY_BUILDING));
       styleMapCheckbox.setChecked(savedInstanceState.getBoolean(KEY_STYLE_MAP));
     }
@@ -128,7 +128,7 @@ public class LayersDemoActivity extends AppCompatActivity implements OnMapReadyC
 
   @Override
   protected void onSaveInstanceState(Bundle bundle) {
-    bundle.putBoolean(KEY_TAFFIC, trafficCheckbox.isChecked());
+    bundle.putBoolean(KEY_TRAFFIC, trafficCheckbox.isChecked());
     bundle.putBoolean(KEY_BUILDING, buildingsCheckbox.isChecked());
     bundle.putBoolean(KEY_STYLE_MAP, styleMapCheckbox.isChecked());
     super.onSaveInstanceState(bundle);
